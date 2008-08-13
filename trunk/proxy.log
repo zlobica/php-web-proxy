@@ -1,0 +1,576 @@
+13-08-2008 16:14:19 -  INFO - URL is: www.google.co.uk
+13-08-2008 16:14:19 - DEBUG - Base URL is: www.google.co.uk
+13-08-2008 16:14:19 - DEBUG - Sanitized 'www.google.co.uk' to 'www_google_co_uk'
+13-08-2008 16:14:19 - DEBUG - No auth data
+13-08-2008 16:14:19 - DEBUG - Setting referer to: http://localhost/proxy/
+13-08-2008 16:14:19 - DEBUG - 2 cookies sent by user
+13-08-2008 16:14:19 - DEBUG - Base URL is: www.google.co.uk
+13-08-2008 16:14:19 - DEBUG - Sanitized 'www.google.co.uk' to 'www_google_co_uk'
+13-08-2008 16:14:20 - DEBUG - Got 7 headers
+13-08-2008 16:14:20 - DEBUG - Extracting cookie: PREF=ID=a78586aeeb2eda58:TM=1218640460:LM=1218640460:S=s6xpk8UbfYFQKAdI; expires=Fri, 13-Aug-2010 15:14:20 GMT; path=/; domain=.google.co.uk
+13-08-2008 16:14:20 - DEBUG - Base URL is: www.google.co.uk
+13-08-2008 16:14:20 - DEBUG - Sanitized 'www.google.co.uk' to 'www_google_co_uk'
+13-08-2008 16:14:20 - DEBUG - Setting cookie name [www_google_co_uk_cookie], value [PREF=ID=a78586aeeb2eda58:TM=1218640460:LM=1218640460:S=s6xpk8UbfYFQKAdI]
+13-08-2008 16:14:20 - DEBUG - Setting header: cache-control: private, max-age=0
+13-08-2008 16:14:20 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:14:20 GMT
+13-08-2008 16:14:20 - DEBUG - Setting header: server: gws
+13-08-2008 16:14:20 - DEBUG - HTTP code is: [200]
+13-08-2008 16:14:20 - DEBUG - Content type is: [text/html; charset=iso-8859-1]
+13-08-2008 16:14:20 - DEBUG - HTML size is 1
+13-08-2008 16:15:08 -  INFO - URL is: www.google.co.uk
+13-08-2008 16:15:08 - DEBUG - Base URL is: www.google.co.uk
+13-08-2008 16:15:08 - DEBUG - Sanitized 'www.google.co.uk' to 'www_google_co_uk'
+13-08-2008 16:15:08 - DEBUG - No auth data
+13-08-2008 16:15:08 - DEBUG - Setting referer to: http://localhost/proxy/
+13-08-2008 16:15:08 - DEBUG - 3 cookies sent by user
+13-08-2008 16:15:08 - DEBUG - Base URL is: www.google.co.uk
+13-08-2008 16:15:08 - DEBUG - Sanitized 'www.google.co.uk' to 'www_google_co_uk'
+13-08-2008 16:15:08 - DEBUG - Sending cookie: www_google_co_uk_cookie, value: PREF=ID=a78586aeeb2eda58:TM=1218640460:LM=1218640460:S=s6xpk8UbfYFQKAdI
+13-08-2008 16:15:08 - DEBUG - Got 6 headers
+13-08-2008 16:15:08 - DEBUG - No cookies sent with request
+13-08-2008 16:15:08 - DEBUG - Setting header: cache-control: private, max-age=0
+13-08-2008 16:15:08 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:15:08 GMT
+13-08-2008 16:15:08 - DEBUG - Setting header: server: gws
+13-08-2008 16:15:08 - DEBUG - HTTP code is: [200]
+13-08-2008 16:15:08 - DEBUG - Content type is: [text/html; charset=iso-8859-1]
+13-08-2008 16:15:08 - DEBUG - Converted URL to: aHR0cDovL3d3dy5nb29nbGUuY28udWsvc2VhcmNo
+13-08-2008 16:15:08 - DEBUG - HTML size is 1
+13-08-2008 16:17:15 -  INFO - URL is: www.google.co.uk
+13-08-2008 16:17:15 - DEBUG - Base URL is: www.google.co.uk
+13-08-2008 16:17:15 - DEBUG - Sanitized 'www.google.co.uk' to 'www_google_co_uk'
+13-08-2008 16:17:15 - DEBUG - No auth data
+13-08-2008 16:17:15 - DEBUG - Setting referer to: http://localhost/proxy/
+13-08-2008 16:17:15 - DEBUG - 3 cookies sent by user
+13-08-2008 16:17:15 - DEBUG - Base URL is: www.google.co.uk
+13-08-2008 16:17:15 - DEBUG - Sanitized 'www.google.co.uk' to 'www_google_co_uk'
+13-08-2008 16:17:15 - DEBUG - Sending cookie: www_google_co_uk_cookie, value: PREF=ID=a78586aeeb2eda58:TM=1218640460:LM=1218640460:S=s6xpk8UbfYFQKAdI
+13-08-2008 16:17:15 - DEBUG - Got 6 headers
+13-08-2008 16:17:15 - DEBUG - No cookies sent with request
+13-08-2008 16:17:15 - DEBUG - Setting header: cache-control: private, max-age=0
+13-08-2008 16:17:15 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:17:16 GMT
+13-08-2008 16:17:15 - DEBUG - Setting header: server: gws
+13-08-2008 16:17:15 - DEBUG - HTTP code is: [200]
+13-08-2008 16:17:15 - DEBUG - Content type is: [text/html; charset=iso-8859-1]
+13-08-2008 16:17:15 - DEBUG - HTML size is 1
+13-08-2008 16:17:16 -  INFO - URL is: http://www.google.co.uk/logos/olympics08_rings.gif
+13-08-2008 16:17:16 - DEBUG - Base URL is: www.google.co.uk
+13-08-2008 16:17:16 - DEBUG - Sanitized 'www.google.co.uk' to 'www_google_co_uk'
+13-08-2008 16:17:16 - DEBUG - No auth data
+13-08-2008 16:17:16 - DEBUG - Setting referer to: www.google.co.uk
+13-08-2008 16:17:16 - DEBUG - 3 cookies sent by user
+13-08-2008 16:17:16 - DEBUG - Base URL is: www.google.co.uk
+13-08-2008 16:17:16 - DEBUG - Sanitized 'www.google.co.uk' to 'www_google_co_uk'
+13-08-2008 16:17:16 - DEBUG - Sending cookie: www_google_co_uk_cookie, value: PREF=ID=a78586aeeb2eda58:TM=1218640460:LM=1218640460:S=s6xpk8UbfYFQKAdI
+13-08-2008 16:17:16 - DEBUG - Got 7 headers
+13-08-2008 16:17:16 - DEBUG - No cookies sent with request
+13-08-2008 16:17:16 - DEBUG - Setting header: last-modified: Tue, 12 Aug 2008 16:04:51 GMT
+13-08-2008 16:17:16 - DEBUG - Setting header: cache-control: public
+13-08-2008 16:17:16 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:17:16 GMT
+13-08-2008 16:17:16 - DEBUG - Setting header: server: gws
+13-08-2008 16:17:16 - DEBUG - HTTP code is: [200]
+13-08-2008 16:17:16 - DEBUG - Content type is: [image/gif]
+13-08-2008 16:18:46 -  INFO - URL is: www.google.co.uk
+13-08-2008 16:18:46 - DEBUG - Base URL is: www.google.co.uk
+13-08-2008 16:18:46 - DEBUG - Sanitized 'www.google.co.uk' to 'www_google_co_uk'
+13-08-2008 16:18:46 - DEBUG - No auth data
+13-08-2008 16:18:46 - DEBUG - Setting referer to: http://localhost/proxy/
+13-08-2008 16:18:46 - DEBUG - 3 cookies sent by user
+13-08-2008 16:18:46 - DEBUG - Base URL is: www.google.co.uk
+13-08-2008 16:18:46 - DEBUG - Sanitized 'www.google.co.uk' to 'www_google_co_uk'
+13-08-2008 16:18:46 - DEBUG - Sending cookie: www_google_co_uk_cookie, value: PREF=ID=a78586aeeb2eda58:TM=1218640460:LM=1218640460:S=s6xpk8UbfYFQKAdI
+13-08-2008 16:18:46 - DEBUG - Got 6 headers
+13-08-2008 16:18:46 - DEBUG - No cookies sent with request
+13-08-2008 16:18:46 - DEBUG - Setting header: cache-control: private, max-age=0
+13-08-2008 16:18:46 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:18:47 GMT
+13-08-2008 16:18:46 - DEBUG - Setting header: server: gws
+13-08-2008 16:18:46 - DEBUG - HTTP code is: [200]
+13-08-2008 16:18:46 - DEBUG - Content type is: [text/html; charset=iso-8859-1]
+13-08-2008 16:18:46 - DEBUG - HTML size is 1
+13-08-2008 16:18:46 -  INFO - URL is: http://www.google.co.uk/logos/olympics08_rings.gif
+13-08-2008 16:18:46 - DEBUG - Base URL is: www.google.co.uk
+13-08-2008 16:18:46 - DEBUG - Sanitized 'www.google.co.uk' to 'www_google_co_uk'
+13-08-2008 16:18:46 - DEBUG - No auth data
+13-08-2008 16:18:46 - DEBUG - Setting referer to: www.google.co.uk
+13-08-2008 16:18:46 - DEBUG - 3 cookies sent by user
+13-08-2008 16:18:46 - DEBUG - Base URL is: www.google.co.uk
+13-08-2008 16:18:46 - DEBUG - Sanitized 'www.google.co.uk' to 'www_google_co_uk'
+13-08-2008 16:18:46 - DEBUG - Sending cookie: www_google_co_uk_cookie, value: PREF=ID=a78586aeeb2eda58:TM=1218640460:LM=1218640460:S=s6xpk8UbfYFQKAdI
+13-08-2008 16:18:47 - DEBUG - Got 7 headers
+13-08-2008 16:18:47 - DEBUG - No cookies sent with request
+13-08-2008 16:18:47 - DEBUG - Setting header: last-modified: Tue, 12 Aug 2008 16:04:51 GMT
+13-08-2008 16:18:47 - DEBUG - Setting header: cache-control: public
+13-08-2008 16:18:47 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:18:47 GMT
+13-08-2008 16:18:47 - DEBUG - Setting header: server: gws
+13-08-2008 16:18:47 - DEBUG - HTTP code is: [200]
+13-08-2008 16:18:47 - DEBUG - Content type is: [image/gif]
+13-08-2008 16:18:56 -  INFO - URL is: www.google.co.uk
+13-08-2008 16:18:56 - DEBUG - Base URL is: www.google.co.uk
+13-08-2008 16:18:56 - DEBUG - Sanitized 'www.google.co.uk' to 'www_google_co_uk'
+13-08-2008 16:18:56 - DEBUG - No auth data
+13-08-2008 16:18:56 - DEBUG - Setting referer to: http://localhost/proxy/
+13-08-2008 16:18:56 - DEBUG - 3 cookies sent by user
+13-08-2008 16:18:56 - DEBUG - Base URL is: www.google.co.uk
+13-08-2008 16:18:56 - DEBUG - Sanitized 'www.google.co.uk' to 'www_google_co_uk'
+13-08-2008 16:18:56 - DEBUG - Sending cookie: www_google_co_uk_cookie, value: PREF=ID=a78586aeeb2eda58:TM=1218640460:LM=1218640460:S=s6xpk8UbfYFQKAdI
+13-08-2008 16:18:56 - DEBUG - Got 6 headers
+13-08-2008 16:18:56 - DEBUG - No cookies sent with request
+13-08-2008 16:18:56 - DEBUG - Setting header: cache-control: private, max-age=0
+13-08-2008 16:18:56 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:18:56 GMT
+13-08-2008 16:18:56 - DEBUG - Setting header: server: gws
+13-08-2008 16:18:56 - DEBUG - HTTP code is: [200]
+13-08-2008 16:18:56 - DEBUG - Content type is: [text/html; charset=iso-8859-1]
+13-08-2008 16:18:56 - DEBUG - Converted URL to: aHR0cDovL3d3dy5nb29nbGUuY28udWsvc2VhcmNo
+13-08-2008 16:18:56 - DEBUG - HTML size is 1
+13-08-2008 16:18:56 -  INFO - URL is: http://www.google.co.uk/logos/olympics08_rings.gif
+13-08-2008 16:18:56 - DEBUG - Base URL is: www.google.co.uk
+13-08-2008 16:18:56 - DEBUG - Sanitized 'www.google.co.uk' to 'www_google_co_uk'
+13-08-2008 16:18:56 - DEBUG - No auth data
+13-08-2008 16:18:56 - DEBUG - Setting referer to: www.google.co.uk
+13-08-2008 16:18:56 - DEBUG - 3 cookies sent by user
+13-08-2008 16:18:56 - DEBUG - Base URL is: www.google.co.uk
+13-08-2008 16:18:56 - DEBUG - Sanitized 'www.google.co.uk' to 'www_google_co_uk'
+13-08-2008 16:18:56 - DEBUG - Sending cookie: www_google_co_uk_cookie, value: PREF=ID=a78586aeeb2eda58:TM=1218640460:LM=1218640460:S=s6xpk8UbfYFQKAdI
+13-08-2008 16:18:56 - DEBUG - Got 7 headers
+13-08-2008 16:18:56 - DEBUG - No cookies sent with request
+13-08-2008 16:18:56 - DEBUG - Setting header: last-modified: Tue, 12 Aug 2008 16:04:51 GMT
+13-08-2008 16:18:56 - DEBUG - Setting header: cache-control: public
+13-08-2008 16:18:56 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:18:57 GMT
+13-08-2008 16:18:56 - DEBUG - Setting header: server: gws
+13-08-2008 16:18:56 - DEBUG - HTTP code is: [200]
+13-08-2008 16:18:56 - DEBUG - Content type is: [image/gif]
+13-08-2008 16:18:57 -  INFO - URL is: https://fordhamchurch.org.uk:1000
+13-08-2008 16:18:57 - DEBUG - Base URL is: fordhamchurch.org.uk:1000
+13-08-2008 16:18:57 - DEBUG - Sanitized 'fordhamchurch.org.uk:1000' to 'fordhamchurch_org_uk_1000'
+13-08-2008 16:18:57 - DEBUG - No auth data
+13-08-2008 16:18:57 - DEBUG - Setting referer to: www.google.co.uk
+13-08-2008 16:18:57 - DEBUG - 3 cookies sent by user
+13-08-2008 16:18:57 - DEBUG - Base URL is: fordhamchurch.org.uk:1000
+13-08-2008 16:18:57 - DEBUG - Sanitized 'fordhamchurch.org.uk:1000' to 'fordhamchurch_org_uk_1000'
+13-08-2008 16:19:18 - DEBUG - Got 0 headers
+13-08-2008 16:19:18 - DEBUG - No cookies sent with request
+13-08-2008 16:19:18 - DEBUG - HTTP code is: [0]
+13-08-2008 16:19:18 - DEBUG - Content type is: []
+13-08-2008 16:24:55 -  INFO - URL is: https://fordhamchurch.org.uk:1000
+13-08-2008 16:24:55 - DEBUG - Base URL is: fordhamchurch.org.uk:1000
+13-08-2008 16:24:55 - DEBUG - Sanitized 'fordhamchurch.org.uk:1000' to 'fordhamchurch_org_uk_1000'
+13-08-2008 16:24:55 - DEBUG - No auth data
+13-08-2008 16:24:55 - DEBUG - Setting referer to: http://giftlistcentral.co.uk/proxy/
+13-08-2008 16:24:55 - DEBUG - 0 cookies sent by user
+13-08-2008 16:24:55 - DEBUG - Base URL is: fordhamchurch.org.uk:1000
+13-08-2008 16:24:55 - DEBUG - Sanitized 'fordhamchurch.org.uk:1000' to 'fordhamchurch_org_uk_1000'
+13-08-2008 16:24:55 - DEBUG - Got 0 headers
+13-08-2008 16:24:55 - DEBUG - No cookies sent with request
+13-08-2008 16:24:55 - DEBUG - HTTP code is: [0]
+13-08-2008 16:24:55 - DEBUG - Content type is: []
+13-08-2008 16:24:58 -  INFO - URL is: https://fordhamchurch.org.uk:1000
+13-08-2008 16:24:58 - DEBUG - Base URL is: fordhamchurch.org.uk:1000
+13-08-2008 16:24:58 - DEBUG - Sanitized 'fordhamchurch.org.uk:1000' to 'fordhamchurch_org_uk_1000'
+13-08-2008 16:24:58 - DEBUG - No auth data
+13-08-2008 16:24:58 - DEBUG - Setting referer to: http://giftlistcentral.co.uk/proxy/
+13-08-2008 16:24:58 - DEBUG - 0 cookies sent by user
+13-08-2008 16:24:58 - DEBUG - Base URL is: fordhamchurch.org.uk:1000
+13-08-2008 16:24:58 - DEBUG - Sanitized 'fordhamchurch.org.uk:1000' to 'fordhamchurch_org_uk_1000'
+13-08-2008 16:24:58 - DEBUG - Got 0 headers
+13-08-2008 16:24:58 - DEBUG - No cookies sent with request
+13-08-2008 16:24:58 - DEBUG - HTTP code is: [0]
+13-08-2008 16:24:58 - DEBUG - Content type is: []
+13-08-2008 16:26:05 -  INFO - URL is: https://fordhamchurch.org.uk:1000
+13-08-2008 16:26:05 - DEBUG - Base URL is: fordhamchurch.org.uk:1000
+13-08-2008 16:26:05 - DEBUG - Sanitized 'fordhamchurch.org.uk:1000' to 'fordhamchurch_org_uk_1000'
+13-08-2008 16:26:05 - DEBUG - No auth data
+13-08-2008 16:26:05 - DEBUG - Setting referer to: http://giftlistcentral.co.uk/proxy/
+13-08-2008 16:26:05 - DEBUG - 0 cookies sent by user
+13-08-2008 16:26:05 - DEBUG - Base URL is: fordhamchurch.org.uk:1000
+13-08-2008 16:26:05 - DEBUG - Sanitized 'fordhamchurch.org.uk:1000' to 'fordhamchurch_org_uk_1000'
+13-08-2008 16:26:05 - DEBUG - Got 0 headers
+13-08-2008 16:26:05 - DEBUG - No cookies sent with request
+13-08-2008 16:26:05 - DEBUG - HTTP code is: [0]
+13-08-2008 16:26:05 - DEBUG - Content type is: []
+13-08-2008 16:26:17 -  INFO - URL is: https://fordhamchurch.org.uk:1000
+13-08-2008 16:26:17 - DEBUG - Base URL is: fordhamchurch.org.uk:1000
+13-08-2008 16:26:17 - DEBUG - Sanitized 'fordhamchurch.org.uk:1000' to 'fordhamchurch_org_uk_1000'
+13-08-2008 16:26:17 - DEBUG - No auth data
+13-08-2008 16:26:17 - DEBUG - Setting referer to: http://giftlistcentral.co.uk/proxy/
+13-08-2008 16:26:17 - DEBUG - 0 cookies sent by user
+13-08-2008 16:26:17 - DEBUG - Base URL is: fordhamchurch.org.uk:1000
+13-08-2008 16:26:17 - DEBUG - Sanitized 'fordhamchurch.org.uk:1000' to 'fordhamchurch_org_uk_1000'
+13-08-2008 16:26:17 - DEBUG - Got 0 headers
+13-08-2008 16:26:17 - DEBUG - No cookies sent with request
+13-08-2008 16:26:17 - DEBUG - HTTP code is: [0]
+13-08-2008 16:26:17 - DEBUG - Content type is: []
+13-08-2008 16:26:29 -  INFO - URL is: https://jaxb.dev.java.net/
+13-08-2008 16:26:29 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:29 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:29 - DEBUG - No auth data
+13-08-2008 16:26:29 - DEBUG - Setting referer to: http://giftlistcentral.co.uk/proxy/
+13-08-2008 16:26:29 - DEBUG - 0 cookies sent by user
+13-08-2008 16:26:29 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:29 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:31 - DEBUG - Got 9 headers
+13-08-2008 16:26:31 - DEBUG - Extracting cookie: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/servlets; Secure
+13-08-2008 16:26:31 - DEBUG - Extracting cookie: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Domain=.dev.java.net; Path=/; Secure
+13-08-2008 16:26:31 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:31 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:31 - DEBUG - Setting cookie name [jaxb_dev_java_net_cookie], value [JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net]
+13-08-2008 16:26:31 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:31 GMT
+13-08-2008 16:26:31 - DEBUG - Setting header: server: Apache
+13-08-2008 16:26:31 - DEBUG - Setting header: x-powered-by: Servlet 2.4; JBoss-4.0.4.GA (build: CVSTag=JBoss_4_0_4_GA date=200605151000)/Tomcat-5.5
+13-08-2008 16:26:31 - DEBUG - Setting header: cache-control: private,max-age=0,must-revalidate
+13-08-2008 16:26:31 - DEBUG - Setting header: helmloginid: guest
+13-08-2008 16:26:31 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:31 - DEBUG - Content type is: [text/html;charset=utf-8]
+13-08-2008 16:26:31 - DEBUG - Converted URL to: aHR0cHM6Ly9qYXhiLmRldi5qYXZhLm5ldC9pc3N1ZXMvc2hvd19idWcuY2dp
+13-08-2008 16:26:31 - DEBUG - Converted URL to: 
+13-08-2008 16:26:31 - DEBUG - HTML size is 1
+13-08-2008 16:26:31 -  INFO - URL is: https://jaxb.dev.java.net/branding/css/tigris.css
+13-08-2008 16:26:31 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:31 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:31 - DEBUG - No auth data
+13-08-2008 16:26:31 - DEBUG - Setting referer to: https://jaxb.dev.java.net/
+13-08-2008 16:26:31 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:31 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:31 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:31 - DEBUG - Sending cookie: jaxb_dev_java_net_cookie, value: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net
+13-08-2008 16:26:31 -  INFO - URL is: https://jaxb.dev.java.net/branding/css/inst.css
+13-08-2008 16:26:31 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:31 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:31 - DEBUG - No auth data
+13-08-2008 16:26:31 - DEBUG - Setting referer to: https://jaxb.dev.java.net/
+13-08-2008 16:26:31 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:31 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:31 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:31 - DEBUG - Sending cookie: jaxb_dev_java_net_cookie, value: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net
+13-08-2008 16:26:31 -  INFO - URL is: https://jaxb.dev.java.net/branding/css/print.css
+13-08-2008 16:26:31 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:31 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:31 - DEBUG - No auth data
+13-08-2008 16:26:31 - DEBUG - Setting referer to: https://jaxb.dev.java.net/
+13-08-2008 16:26:31 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:31 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:31 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:31 - DEBUG - Sending cookie: jaxb_dev_java_net_cookie, value: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net
+13-08-2008 16:26:32 -  INFO - URL is: https://jaxb.dev.java.net/branding/css/alm.css
+13-08-2008 16:26:32 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:32 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:32 - DEBUG - No auth data
+13-08-2008 16:26:32 - DEBUG - Setting referer to: https://jaxb.dev.java.net/
+13-08-2008 16:26:32 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:32 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:32 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:32 - DEBUG - Sending cookie: jaxb_dev_java_net_cookie, value: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net
+13-08-2008 16:26:32 -  INFO - URL is: http://jaxb.dev.java.net/images/glassfish_favicon.gif
+13-08-2008 16:26:32 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:32 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:32 - DEBUG - No auth data
+13-08-2008 16:26:32 - DEBUG - Referer is empty.
+13-08-2008 16:26:32 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:32 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:32 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:32 - DEBUG - Sending cookie: jaxb_dev_java_net_cookie, value: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net
+13-08-2008 16:26:32 - DEBUG - Got 7 headers
+13-08-2008 16:26:32 - DEBUG - No cookies sent with request
+13-08-2008 16:26:32 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:33 GMT
+13-08-2008 16:26:32 - DEBUG - Setting header: server: Apache
+13-08-2008 16:26:32 - DEBUG - Setting header: last-modified: Mon, 06 Aug 2007 18:42:21 GMT
+13-08-2008 16:26:32 - DEBUG - Setting header: etag: "1c9f3-102-44d83d40"
+13-08-2008 16:26:32 - DEBUG - Setting header: accept-ranges: bytes
+13-08-2008 16:26:32 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:32 - DEBUG - Content type is: [text/css]
+13-08-2008 16:26:32 - DEBUG - Got 7 headers
+13-08-2008 16:26:32 - DEBUG - No cookies sent with request
+13-08-2008 16:26:32 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:33 GMT
+13-08-2008 16:26:32 - DEBUG - Setting header: server: Apache
+13-08-2008 16:26:32 - DEBUG - Setting header: last-modified: Thu, 12 Apr 2007 08:31:18 GMT
+13-08-2008 16:26:32 - DEBUG - Setting header: etag: "acd3f-218d-35f7c180"
+13-08-2008 16:26:32 - DEBUG - Setting header: accept-ranges: bytes
+13-08-2008 16:26:32 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:32 - DEBUG - Content type is: [text/css]
+13-08-2008 16:26:32 - DEBUG - Got 5 headers
+13-08-2008 16:26:32 -  INFO - Redirecting to: https://jaxb.dev.java.net/images/glassfish_favicon.gif
+13-08-2008 16:26:32 - DEBUG - Got 7 headers
+13-08-2008 16:26:32 - DEBUG - No cookies sent with request
+13-08-2008 16:26:32 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:33 GMT
+13-08-2008 16:26:32 - DEBUG - Setting header: server: Apache
+13-08-2008 16:26:32 - DEBUG - Setting header: last-modified: Mon, 06 Aug 2007 18:42:22 GMT
+13-08-2008 16:26:32 - DEBUG - Setting header: etag: "1c9f4-5b8c-44e77f80"
+13-08-2008 16:26:32 - DEBUG - Setting header: accept-ranges: bytes
+13-08-2008 16:26:32 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:32 - DEBUG - Content type is: [text/css]
+13-08-2008 16:26:33 -  INFO - URL is: https://jaxb.dev.java.net/images/glassfish_favicon.gif
+13-08-2008 16:26:33 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:33 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:33 - DEBUG - No auth data
+13-08-2008 16:26:33 - DEBUG - Referer is empty.
+13-08-2008 16:26:33 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:33 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:33 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:33 - DEBUG - Got 7 headers
+13-08-2008 16:26:33 - DEBUG - Sending cookie: jaxb_dev_java_net_cookie, value: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net
+13-08-2008 16:26:33 - DEBUG - No cookies sent with request
+13-08-2008 16:26:33 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:33 GMT
+13-08-2008 16:26:33 - DEBUG - Setting header: server: Apache
+13-08-2008 16:26:33 - DEBUG - Setting header: last-modified: Mon, 06 Aug 2007 18:58:22 GMT
+13-08-2008 16:26:33 - DEBUG - Setting header: etag: "1cb53-1f53-7e1fef80"
+13-08-2008 16:26:33 - DEBUG - Setting header: accept-ranges: bytes
+13-08-2008 16:26:33 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:33 - DEBUG - Content type is: [text/css]
+13-08-2008 16:26:33 -  INFO - URL is: https://jaxb.dev.java.net/branding/css/onlinehelp.css
+13-08-2008 16:26:33 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:33 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:33 - DEBUG - No auth data
+13-08-2008 16:26:33 - DEBUG - Setting referer to: https://jaxb.dev.java.net/branding/css/tigris.css
+13-08-2008 16:26:33 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:33 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:33 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:33 - DEBUG - Sending cookie: jaxb_dev_java_net_cookie, value: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net
+13-08-2008 16:26:33 - DEBUG - Got 8 headers
+13-08-2008 16:26:33 - DEBUG - No cookies sent with request
+13-08-2008 16:26:33 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:34 GMT
+13-08-2008 16:26:33 - DEBUG - Setting header: server: Apache
+13-08-2008 16:26:33 - DEBUG - Setting header: x-powered-by: Servlet 2.4; JBoss-4.0.4.GA (build: CVSTag=JBoss_4_0_4_GA date=200605151000)/Tomcat-5.5
+13-08-2008 16:26:33 - DEBUG - Setting header: cache-control: private,max-age=0,must-revalidate
+13-08-2008 16:26:33 - DEBUG - Setting header: helmloginid: guest
+13-08-2008 16:26:33 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:33 - DEBUG - Content type is: [image/gif]
+13-08-2008 16:26:34 - DEBUG - Got 7 headers
+13-08-2008 16:26:34 - DEBUG - No cookies sent with request
+13-08-2008 16:26:34 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:34 GMT
+13-08-2008 16:26:34 - DEBUG - Setting header: server: Apache
+13-08-2008 16:26:34 - DEBUG - Setting header: last-modified: Mon, 06 Aug 2007 18:42:23 GMT
+13-08-2008 16:26:34 - DEBUG - Setting header: etag: "1c9f2-79d-44f6c1c0"
+13-08-2008 16:26:34 - DEBUG - Setting header: accept-ranges: bytes
+13-08-2008 16:26:34 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:34 - DEBUG - Content type is: [text/css]
+13-08-2008 16:26:34 -  INFO - URL is: https://jaxb.dev.java.net/branding/images/header_jnet_new.jpg
+13-08-2008 16:26:34 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:34 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:34 - DEBUG - No auth data
+13-08-2008 16:26:34 - DEBUG - Setting referer to: https://jaxb.dev.java.net/
+13-08-2008 16:26:34 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:34 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:34 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:34 - DEBUG - Sending cookie: jaxb_dev_java_net_cookie, value: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net
+13-08-2008 16:26:34 -  INFO - URL is: https://jaxb.dev.java.net/2.0.5/download.png
+13-08-2008 16:26:34 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:34 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:34 - DEBUG - No auth data
+13-08-2008 16:26:34 - DEBUG - Setting referer to: https://jaxb.dev.java.net/
+13-08-2008 16:26:34 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:34 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:34 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:34 - DEBUG - Sending cookie: jaxb_dev_java_net_cookie, value: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net
+13-08-2008 16:26:34 -  INFO - URL is: https://jaxb.dev.java.net/2.1.7/download.png
+13-08-2008 16:26:34 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:34 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:34 - DEBUG - No auth data
+13-08-2008 16:26:34 - DEBUG - Setting referer to: https://jaxb.dev.java.net/
+13-08-2008 16:26:34 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:34 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:34 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:34 - DEBUG - Sending cookie: jaxb_dev_java_net_cookie, value: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net
+13-08-2008 16:26:34 -  INFO - URL is: https://jaxb.dev.java.net/branding/images/logo_sun_small.gif
+13-08-2008 16:26:34 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:34 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:34 - DEBUG - No auth data
+13-08-2008 16:26:34 - DEBUG - Setting referer to: https://jaxb.dev.java.net/
+13-08-2008 16:26:34 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:34 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:34 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:34 - DEBUG - Sending cookie: jaxb_dev_java_net_cookie, value: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net
+13-08-2008 16:26:34 -  INFO - URL is: https://jaxb.dev.java.net/branding/images/xml.gif
+13-08-2008 16:26:34 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:34 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:34 - DEBUG - No auth data
+13-08-2008 16:26:34 - DEBUG - Setting referer to: https://jaxb.dev.java.net/
+13-08-2008 16:26:34 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:34 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:34 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:34 - DEBUG - Sending cookie: jaxb_dev_java_net_cookie, value: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net
+13-08-2008 16:26:34 -  INFO - URL is: https://jaxb.dev.java.net/branding/images/montague_logo_oreilly.gif
+13-08-2008 16:26:34 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:34 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:34 - DEBUG - No auth data
+13-08-2008 16:26:34 - DEBUG - Setting referer to: https://jaxb.dev.java.net/
+13-08-2008 16:26:34 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:34 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:34 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:34 - DEBUG - Sending cookie: jaxb_dev_java_net_cookie, value: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net
+13-08-2008 16:26:35 - DEBUG - Got 7 headers
+13-08-2008 16:26:35 - DEBUG - No cookies sent with request
+13-08-2008 16:26:35 - DEBUG - Got 7 headers
+13-08-2008 16:26:35 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:36 GMT
+13-08-2008 16:26:35 - DEBUG - Setting header: server: Apache
+13-08-2008 16:26:35 - DEBUG - No cookies sent with request
+13-08-2008 16:26:35 - DEBUG - Setting header: last-modified: Thu, 21 Jul 2005 17:16:10 GMT
+13-08-2008 16:26:35 - DEBUG - Setting header: etag: "2d2312-6bc-1b034a80"
+13-08-2008 16:26:35 - DEBUG - Setting header: accept-ranges: bytes
+13-08-2008 16:26:35 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:35 - DEBUG - Content type is: [image/gif]
+13-08-2008 16:26:35 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:36 GMT
+13-08-2008 16:26:35 - DEBUG - Setting header: server: Apache
+13-08-2008 16:26:35 - DEBUG - Setting header: last-modified: Mon, 18 Jul 2005 17:25:06 GMT
+13-08-2008 16:26:35 - DEBUG - Setting header: etag: "3e2880-1766-e16fe080"
+13-08-2008 16:26:35 - DEBUG - Setting header: accept-ranges: bytes
+13-08-2008 16:26:35 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:35 - DEBUG - Content type is: [image/jpeg]
+13-08-2008 16:26:35 - DEBUG - Got 7 headers
+13-08-2008 16:26:35 - DEBUG - No cookies sent with request
+13-08-2008 16:26:35 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:36 GMT
+13-08-2008 16:26:35 - DEBUG - Setting header: server: Apache
+13-08-2008 16:26:35 - DEBUG - Setting header: last-modified: Thu, 25 Mar 2004 00:36:56 GMT
+13-08-2008 16:26:35 - DEBUG - Setting header: etag: "3e286c-1ad-d81fba00"
+13-08-2008 16:26:35 - DEBUG - Setting header: accept-ranges: bytes
+13-08-2008 16:26:35 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:35 - DEBUG - Content type is: [image/gif]
+13-08-2008 16:26:35 - DEBUG - Got 7 headers
+13-08-2008 16:26:35 - DEBUG - No cookies sent with request
+13-08-2008 16:26:35 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:36 GMT
+13-08-2008 16:26:35 - DEBUG - Setting header: server: Apache
+13-08-2008 16:26:35 - DEBUG - Setting header: last-modified: Sat, 21 Feb 2004 16:06:41 GMT
+13-08-2008 16:26:35 - DEBUG - Setting header: etag: "2d2314-24e-fc67e640"
+13-08-2008 16:26:35 - DEBUG - Setting header: accept-ranges: bytes
+13-08-2008 16:26:35 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:35 - DEBUG - Content type is: [image/gif]
+13-08-2008 16:26:35 -  INFO - URL is: http://jaxb.dev.java.net/images/glassfish_favicon.gif
+13-08-2008 16:26:35 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:35 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:35 - DEBUG - No auth data
+13-08-2008 16:26:35 - DEBUG - Referer is empty.
+13-08-2008 16:26:35 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:35 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:35 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:35 - DEBUG - Sending cookie: jaxb_dev_java_net_cookie, value: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net
+13-08-2008 16:26:35 -  INFO - URL is: https://jaxb.dev.java.net/branding/css/../images/icon_help_sml.gif
+13-08-2008 16:26:35 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:35 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:35 - DEBUG - No auth data
+13-08-2008 16:26:35 - DEBUG - Setting referer to: https://jaxb.dev.java.net/branding/css/inst.css
+13-08-2008 16:26:35 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:35 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:35 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:35 - DEBUG - Sending cookie: jaxb_dev_java_net_cookie, value: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net
+13-08-2008 16:26:35 - DEBUG - Got 8 headers
+13-08-2008 16:26:35 - DEBUG - No cookies sent with request
+13-08-2008 16:26:35 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:36 GMT
+13-08-2008 16:26:35 - DEBUG - Setting header: server: Apache
+13-08-2008 16:26:35 - DEBUG - Setting header: x-powered-by: Servlet 2.4; JBoss-4.0.4.GA (build: CVSTag=JBoss_4_0_4_GA date=200605151000)/Tomcat-5.5
+13-08-2008 16:26:35 - DEBUG - Setting header: cache-control: private,max-age=0,must-revalidate
+13-08-2008 16:26:35 - DEBUG - Setting header: helmloginid: guest
+13-08-2008 16:26:35 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:35 - DEBUG - Content type is: [image/png]
+13-08-2008 16:26:35 - DEBUG - Got 8 headers
+13-08-2008 16:26:35 - DEBUG - No cookies sent with request
+13-08-2008 16:26:35 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:36 GMT
+13-08-2008 16:26:35 - DEBUG - Setting header: server: Apache
+13-08-2008 16:26:35 - DEBUG - Setting header: x-powered-by: Servlet 2.4; JBoss-4.0.4.GA (build: CVSTag=JBoss_4_0_4_GA date=200605151000)/Tomcat-5.5
+13-08-2008 16:26:35 - DEBUG - Setting header: cache-control: private,max-age=0,must-revalidate
+13-08-2008 16:26:35 - DEBUG - Setting header: helmloginid: guest
+13-08-2008 16:26:35 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:35 - DEBUG - Content type is: [image/png]
+13-08-2008 16:26:35 -  INFO - URL is: https://jaxb.dev.java.net/branding/css/../images/poweredby.gif
+13-08-2008 16:26:35 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:35 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:35 - DEBUG - No auth data
+13-08-2008 16:26:35 - DEBUG - Setting referer to: https://jaxb.dev.java.net/branding/css/tigris.css
+13-08-2008 16:26:35 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:35 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:35 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:35 - DEBUG - Sending cookie: jaxb_dev_java_net_cookie, value: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net
+13-08-2008 16:26:35 - DEBUG - Got 5 headers
+13-08-2008 16:26:35 -  INFO - Redirecting to: https://jaxb.dev.java.net/images/glassfish_favicon.gif
+13-08-2008 16:26:35 -  INFO - URL is: https://jaxb.dev.java.net/images/glassfish_favicon.gif
+13-08-2008 16:26:35 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:35 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:35 - DEBUG - No auth data
+13-08-2008 16:26:35 - DEBUG - Referer is empty.
+13-08-2008 16:26:35 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:35 - DEBUG - Base URL is: jaxb.dev.java.net
+13-08-2008 16:26:35 - DEBUG - Sanitized 'jaxb.dev.java.net' to 'jaxb_dev_java_net'
+13-08-2008 16:26:35 - DEBUG - Sending cookie: jaxb_dev_java_net_cookie, value: JSESSIONID=D257555EEDF217F05DC82F108073DF32; Path=/; Domain=.dev.java.net
+13-08-2008 16:26:36 - DEBUG - Got 7 headers
+13-08-2008 16:26:36 - DEBUG - No cookies sent with request
+13-08-2008 16:26:36 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:36 GMT
+13-08-2008 16:26:36 - DEBUG - Setting header: server: Apache
+13-08-2008 16:26:36 - DEBUG - Setting header: last-modified: Mon, 06 Aug 2007 18:42:21 GMT
+13-08-2008 16:26:36 - DEBUG - Setting header: etag: "14499-26b-44d83d40"
+13-08-2008 16:26:36 - DEBUG - Setting header: accept-ranges: bytes
+13-08-2008 16:26:36 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:36 - DEBUG - Content type is: [image/gif]
+13-08-2008 16:26:36 - DEBUG - Got 7 headers
+13-08-2008 16:26:36 - DEBUG - No cookies sent with request
+13-08-2008 16:26:36 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:37 GMT
+13-08-2008 16:26:36 - DEBUG - Setting header: server: Apache
+13-08-2008 16:26:36 - DEBUG - Setting header: last-modified: Mon, 06 Aug 2007 18:42:22 GMT
+13-08-2008 16:26:36 - DEBUG - Setting header: etag: "144b6-3a7-44e77f80"
+13-08-2008 16:26:36 - DEBUG - Setting header: accept-ranges: bytes
+13-08-2008 16:26:36 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:36 - DEBUG - Content type is: [image/gif]
+13-08-2008 16:26:36 - DEBUG - Got 8 headers
+13-08-2008 16:26:36 - DEBUG - No cookies sent with request
+13-08-2008 16:26:36 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:37 GMT
+13-08-2008 16:26:36 - DEBUG - Setting header: server: Apache
+13-08-2008 16:26:36 - DEBUG - Setting header: x-powered-by: Servlet 2.4; JBoss-4.0.4.GA (build: CVSTag=JBoss_4_0_4_GA date=200605151000)/Tomcat-5.5
+13-08-2008 16:26:36 - DEBUG - Setting header: cache-control: private,max-age=0,must-revalidate
+13-08-2008 16:26:36 - DEBUG - Setting header: helmloginid: guest
+13-08-2008 16:26:36 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:36 - DEBUG - Content type is: [image/gif]
+13-08-2008 16:26:44 -  INFO - URL is: https://fordhamchurch.org.uk:10000
+13-08-2008 16:26:44 - DEBUG - Base URL is: fordhamchurch.org.uk:10000
+13-08-2008 16:26:44 - DEBUG - Sanitized 'fordhamchurch.org.uk:10000' to 'fordhamchurch_org_uk_10000'
+13-08-2008 16:26:44 - DEBUG - No auth data
+13-08-2008 16:26:44 - DEBUG - Setting referer to: https://jaxb.dev.java.net/
+13-08-2008 16:26:44 - DEBUG - 1 cookies sent by user
+13-08-2008 16:26:44 - DEBUG - Base URL is: fordhamchurch.org.uk:10000
+13-08-2008 16:26:44 - DEBUG - Sanitized 'fordhamchurch.org.uk:10000' to 'fordhamchurch_org_uk_10000'
+13-08-2008 16:26:44 - DEBUG - Got 8 headers
+13-08-2008 16:26:44 - DEBUG - Extracting cookie: testing=1; path=/; secure
+13-08-2008 16:26:44 - DEBUG - Base URL is: fordhamchurch.org.uk:10000
+13-08-2008 16:26:44 - DEBUG - Sanitized 'fordhamchurch.org.uk:10000' to 'fordhamchurch_org_uk_10000'
+13-08-2008 16:26:44 - DEBUG - Setting cookie name [fordhamchurch_org_uk_10000_cookie], value [testing=1]
+13-08-2008 16:26:44 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:13 GMT
+13-08-2008 16:26:44 - DEBUG - Setting header: server: MiniServ/0.01
+13-08-2008 16:26:44 - DEBUG - Setting header: connection: close
+13-08-2008 16:26:44 - DEBUG - Setting header: cache-control: Array
+13-08-2008 16:26:44 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:44 - DEBUG - Content type is: [text/html; charset=iso-8859-1]
+13-08-2008 16:26:44 - DEBUG - Converted URL to: 
+13-08-2008 16:26:44 - DEBUG - HTML size is 1
+13-08-2008 16:26:44 -  INFO - URL is: https://fordhamchurch.org.uk:10000/unauthenticated/style.css
+13-08-2008 16:26:44 - DEBUG - Base URL is: fordhamchurch.org.uk:10000
+13-08-2008 16:26:44 - DEBUG - Sanitized 'fordhamchurch.org.uk:10000' to 'fordhamchurch_org_uk_10000'
+13-08-2008 16:26:44 - DEBUG - No auth data
+13-08-2008 16:26:44 - DEBUG - Setting referer to: https://fordhamchurch.org.uk:10000
+13-08-2008 16:26:44 - DEBUG - 2 cookies sent by user
+13-08-2008 16:26:44 - DEBUG - Base URL is: fordhamchurch.org.uk:10000
+13-08-2008 16:26:44 - DEBUG - Sanitized 'fordhamchurch.org.uk:10000' to 'fordhamchurch_org_uk_10000'
+13-08-2008 16:26:44 - DEBUG - Sending cookie: fordhamchurch_org_uk_10000_cookie, value: testing=1
+13-08-2008 16:26:44 - DEBUG - Got 7 headers
+13-08-2008 16:26:44 - DEBUG - No cookies sent with request
+13-08-2008 16:26:44 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:13 GMT
+13-08-2008 16:26:44 - DEBUG - Setting header: server: MiniServ/0.01
+13-08-2008 16:26:44 - DEBUG - Setting header: last-modified: Mon, 4 Feb 2008 01:02:06 GMT
+13-08-2008 16:26:44 - DEBUG - Setting header: connection: close
+13-08-2008 16:26:44 - DEBUG - HTTP code is: [200]
+13-08-2008 16:26:44 - DEBUG - Content type is: [text/css]
+13-08-2008 16:27:10 -  INFO - URL is: https://fordhamchurch.org.uk:10000/session_login.cgi
+13-08-2008 16:27:10 - DEBUG - Base URL is: fordhamchurch.org.uk:10000
+13-08-2008 16:27:10 - DEBUG - Sanitized 'fordhamchurch.org.uk:10000' to 'fordhamchurch_org_uk_10000'
+13-08-2008 16:27:10 - DEBUG - No auth data
+13-08-2008 16:27:10 - DEBUG - Referer is empty.
+13-08-2008 16:27:10 - DEBUG - 2 cookies sent by user
+13-08-2008 16:27:10 - DEBUG - Base URL is: fordhamchurch.org.uk:10000
+13-08-2008 16:27:10 - DEBUG - Sanitized 'fordhamchurch.org.uk:10000' to 'fordhamchurch_org_uk_10000'
+13-08-2008 16:27:10 - DEBUG - Sending cookie: fordhamchurch_org_uk_10000_cookie, value: testing=1
+13-08-2008 16:27:10 - DEBUG - Got 8 headers
+13-08-2008 16:27:10 - DEBUG - Extracting cookie: testing=1; path=/; secure
+13-08-2008 16:27:10 - DEBUG - Base URL is: fordhamchurch.org.uk:10000
+13-08-2008 16:27:10 - DEBUG - Sanitized 'fordhamchurch.org.uk:10000' to 'fordhamchurch_org_uk_10000'
+13-08-2008 16:27:10 - DEBUG - Setting cookie name [fordhamchurch_org_uk_10000_cookie], value [testing=1]
+13-08-2008 16:27:10 - DEBUG - Setting header: date: Wed, 13 Aug 2008 15:26:39 GMT
+13-08-2008 16:27:10 - DEBUG - Setting header: server: MiniServ/0.01
+13-08-2008 16:27:10 - DEBUG - Setting header: connection: close
+13-08-2008 16:27:10 - DEBUG - Setting header: cache-control: Array
+13-08-2008 16:27:10 - DEBUG - HTTP code is: [200]
+13-08-2008 16:27:10 - DEBUG - Content type is: [text/html; charset=iso-8859-1]
+13-08-2008 16:27:10 - DEBUG - Converted URL to: 
+13-08-2008 16:27:10 - DEBUG - HTML size is 1
