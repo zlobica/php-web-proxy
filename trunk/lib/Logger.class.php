@@ -1,9 +1,11 @@
 <?php
 
-define('LOG_FILE', dirname(__FILE__) . '/../logs/proxy.log');
-define('LINE_BREAK', "\n");
-define('DATE_FORMAT', 'd-m-Y H:i:s');
-define('LOG_LEVEL', 0);
+define('LOG_FILE',         dirname(__FILE__) . '/../logs/proxy.log'); // The path to the log file.
+define('LINE_BREAK',       "\n"); // Which line break character should be used.
+define('DATE_FORMAT',      'd-m-Y H:i:s'); // The date format for the log entry
+define('LOG_LEVEL',        0); // 0 = Debug (Lowest), 4 = Fatal (Highest)
+define('LOG_MAX_SIZE',     100); // Maximum log file size in KB. Set to 0 for unlimited.
+define('MAX_LOG_BACKUPS',  5); // The number of log files to keep.
 
 /**
  * Logger class. This will write out input to a log file
@@ -57,6 +59,7 @@ class Logger {
 		
 		fwrite($this->file, $toWrite);
 		$this->closeLog();
+		$this->rotateLog();
 	}
 	
 	private function openLog() {
@@ -65,6 +68,33 @@ class Logger {
 	
 	private function closeLog() {
 		fclose($this->file);
+	}
+	
+	private function rotateLog() {
+		if (LOG_MAX_SIZE > 0) {
+			$bytes = LOG_MAX_SIZE * 1024; // convert KB to bytes
+			$size = filesize(LOG_FILE);
+			
+			if ($size > $bytes) {
+				if (MAX_LOG_BACKUPS > 0) {
+					if (file_exists(LOG_FILE . '.' . MAX_LOG_BACKUPS)) {
+						unlink(LOG_FILE . '.' . MAX_LOG_BACKUPS);
+					}
+					
+					for ($i = MAX_LOG_BACKUPS - 1; $i > 0; $i--) {
+						$filename = LOG_FILE . '.' . $i;
+						if (file_exists($filename)) {
+							rename($filename, LOG_FILE . '.' . ($i + 1));
+						}
+					}
+					
+					rename(LOG_FILE, LOG_FILE . '.1');
+				}
+				else {
+					unlink(LOG_FILE);
+				}
+			}
+		}
 	}
 	
 	private function getCallingFunction() {

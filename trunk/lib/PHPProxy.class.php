@@ -1,6 +1,8 @@
 <?php
 
 require_once(dirname(__FILE__) . '/Logger.class.php');
+require_once(dirname(__FILE__) . '/CurlConnector.class.php');
+
 
 define('INDEX_FILE_NAME', 'index.php');
 define('URL_PARAM_NAME', 'proxy_url');
@@ -60,10 +62,9 @@ class PHPProxy {
 		
 		$this->appendQueryString();
 		
-		$this->curl = curl_init($this->url);
 		$this->local_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
 		
-		$this->log->info('URL is: ' . $this->url);
+		$this->log->info('Connecting to: ' . $this->url);
 		
 		if ($username !== NULL) {
 			$this->username = $username;
@@ -74,6 +75,8 @@ class PHPProxy {
 		else {
 			$this->loadUsernamePasswordInfo();
 		}
+		
+		$this->connector = new CurlConnector($this->url);
 	}
 	
 	/** 
@@ -82,17 +85,8 @@ class PHPProxy {
 	 * the output out to the current page.
 	 */
 	function handleRequest() {
-		curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, FALSE);
-		curl_setopt($this->curl, CURLOPT_MAXREDIRS, 5);
-		curl_setopt($this->curl, CURLOPT_HEADER, FALSE);
-		curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, TRUE);
-		curl_setopt($this->curl, CURLOPT_AUTOREFERER, TRUE);
-		curl_setopt($this->curl, CURLOPT_HEADER, TRUE);
-		curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, FALSE); // Disable SSL cert checking
-		curl_setopt($this->curl, CURLOPT_SSL_VERIFYHOST, FALSE); // cURL does not like some SSL certs apparently
-		
 		if ($this->username) {
-			curl_setopt($this->curl, CURLOPT_USERPWD, $this->username . ':' . $this->password);
+			$connector->setLogin($this->username, $this->password);
 		}
 		
 		$this->setReferer();
@@ -102,19 +96,14 @@ class PHPProxy {
 		
 		if (!empty($this->post)) {
 			$this->log->debug(sprintf('Sending POST request; %d post vars', sizeof($this->post)));
-			curl_setopt($this->curl, CURLOPT_POST, TRUE);
-			curl_setopt($this->curl, CURLOPT_POSTFIELDS, $this->post);
+			$this->connector->setPostInfo($this->post);
 		}
 		
-		$result = curl_exec($this->curl);
-		
-		$info = curl_getinfo($this->curl);
-		$contentType = strtolower($info['content_type']);
-		$url = $info['url'];
-		
-		$this->url = $url;
+		$this->connector->connect();
+		$result = $this->connector->getOutput();
 		
 		$headers = $this->extractHeaders($result);
+		$contentType = $headers['content-type'];
 		
 		// Set cookies first in case location header redirects us and we lose cookie info
 		if ($this->opts['accept_cookies'] === TRUE) {
@@ -139,7 +128,6 @@ class PHPProxy {
 			die();
 		}
 		
-		curl_close($this->curl);
 		foreach($this->cleanup_files as $file) {
 			$this->log->debug("Removing '$file'");
 			unlink($file);
@@ -174,6 +162,8 @@ class PHPProxy {
 		else {
 			echo $result;
 		}
+		
+		$this->connector->disconnect();
 	}
 	
 	/**
@@ -311,7 +301,7 @@ class PHPProxy {
 		
 		if (!empty($url)) {
 			$this->log->debug('Setting referer to: ' . $url);
-			curl_setopt($this->curl, CURLOPT_REFERER, $url);
+			$this->connector->setReferer($url);
 		}
 		else {
 			$this->log->debug('Referer is empty.');
@@ -336,7 +326,7 @@ class PHPProxy {
 			
 			$this->log->debug('Sending cookie: ' . $name . ', value: ' . $decoded);
 			
-			curl_setopt($this->curl, CURLOPT_COOKIE, $decoded);
+			$this->connector->setCookie($decoded);
 			
 			$arr = explode('; ', $decoded);
 			foreach ($arr as $vals) {
