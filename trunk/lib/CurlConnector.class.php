@@ -47,6 +47,9 @@ class CurlConnector implements Connector {
 	function connect() {
 		$this->output = curl_exec($this->curl);
 		
+		$info = curl_getinfo($this->curl);
+		$this->httpCode = $info['http_code'];
+		
 		$this->extractHeaders($this->output);
 	}
 	
@@ -56,6 +59,10 @@ class CurlConnector implements Connector {
 	
 	function getHeaders() {
 		return $this->headers;
+	}
+	
+	function getHttpCode() {
+		return $this->httpCode;
 	}
 	
 	function getOutput() {

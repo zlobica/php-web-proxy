@@ -33,6 +33,8 @@ document.write('Hello from the land of JavaScript');
 
 </script>
 
+<p><a href="loggedin.php">Test Link</a></p>
+
 <form method="post" action="login.php">
 
 <table>

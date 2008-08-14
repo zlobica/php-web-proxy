@@ -41,7 +41,7 @@ class PHPProxy {
 	// here.
 	var $disallowed_headers = array(
 		'set-cookie', 'content-length', 'content-type', 'transfer-encoding', 'location',
-		'expires', 'pragma'
+		'expires', 'pragma', 'cache-control'
 	);
 	
 	// An array of protocols that this script supports.
@@ -102,6 +102,7 @@ class PHPProxy {
 		$this->connector->connect();
 		$result = $this->connector->getOutput();
 		
+		$httpCode = $this->connector->getHttpCode();
 		$headers = $this->connector->getHeaders();
 		$contentType = $headers['content-type'];
 		
@@ -111,8 +112,16 @@ class PHPProxy {
 		}
 		
 		if (array_key_exists('location', $headers)) {
-			$this->log->info('Redirecting to: ' . $headers['location']);
-			header('Location: ' . $this->local_url . '?' . URL_PARAM_NAME . '=' . base64_encode($headers['location']));
+			// Convert the URL because some scripts don't send the full URL (in violation of the RFC, I believe...)
+			$location = $headers['location'];
+			if (strpos($location, INDEX_FILE_NAME . '?' . URL_PARAM_NAME) === FALSE) {
+				$location = $this->convertUrl($location);
+			}
+			else {
+				$location = $this->local_url . '?' . URL_PARAM_NAME . '=' . base64_encode($location);
+			}
+			$this->log->info('Redirecting to: ' . $location);
+			header('Location: ' . $location);
 			die();
 		}
 		
@@ -133,8 +142,11 @@ class PHPProxy {
 			unlink($file);
 		}
 		
-		header('HTTP/1.1 ' . $info['http_code']);
+		header('HTTP/1.1 ' . $httpCode);
 		header('Content-Type: ' . $contentType);
+		header('Cache-Control: no-store, no-cache, must-revalidate');
+		header('Cache-Control: post-check=0, pre-check=0', FALSE);
+		header('Pragma: no-cache');
 		
 		foreach ($headers as $key => $val) {
 			if (in_array(strtolower($key), $this->disallowed_headers)) continue;
@@ -144,7 +156,7 @@ class PHPProxy {
 			header($key . ': ' . $val);
 		}
 		
-		$this->log->debug(sprintf('HTTP code is: [%s]', $info['http_code']));
+		$this->log->debug(sprintf('HTTP code is: [%s]', $httpCode));
 		$this->log->debug(sprintf('Content type is: [%s]', $contentType));
 		
 		if (strstr($contentType, 'html') !== FALSE) {
@@ -463,12 +475,12 @@ class PHPProxy {
 	 * Include the nav bar in an HTML document.
 	 */
 	private function includeNavbar(& $html) {
-		
+		$this->log->debug('Including navbar: '. $this->url );
 		// include() the file so that it doesn't have to be pure PHP
 		// use the output buffer to prevent it being written to the page
 		// in the wrong place.
 		ob_start();
-		include(dirname(__FILE__) . '/../navbar.inc.php');
+		include_once(dirname(__FILE__) . '/../navbar.inc.php');
 		$navbar = ob_get_contents();
 		ob_end_clean();
 		
