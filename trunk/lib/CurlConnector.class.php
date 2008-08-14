@@ -32,8 +32,21 @@ class CurlConnector implements Connector {
 	}
 	
 	function setPostInfo($fields) {
+		$postdata = '';
+		$fileUpload = FALSE;
+		
+		foreach($fields as $key=>$val) {
+			if (substr($val, 0, 1) == '@') {
+				$fileUpload = TRUE;
+				break;
+			}
+			
+			$postdata .= urlencode($key) . '=' . urlencode($val);
+			$postdata .= '&';
+		}
+		
 		curl_setopt($this->curl, CURLOPT_POST, TRUE);
-		curl_setopt($this->curl, CURLOPT_POSTFIELDS, $fields);
+		curl_setopt($this->curl, CURLOPT_POSTFIELDS, $fileUpload == TRUE ? $fields : $postdata);
 	}
 	
 	function setReferer($referer) {
