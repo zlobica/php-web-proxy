@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(__FILE__) . '/PHPProxy.class.php');
+require_once(dirname(__FILE__) . '/lib/PHPProxy.class.php');
 
 if ($_POST['username'] == NULL):
 ?>

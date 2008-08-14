@@ -1,6 +1,6 @@
 <?php
 
-define('LOG_FILE', dirname(__FILE__) . '/logs/proxy.log');
+define('LOG_FILE', dirname(__FILE__) . '/../logs/proxy.log');
 define('LINE_BREAK', "\n");
 define('DATE_FORMAT', 'd-m-Y H:i:s');
 define('LOG_LEVEL', 0);

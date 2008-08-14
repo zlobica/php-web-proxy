@@ -1,6 +1,6 @@
 <?php
 
-require_once('Logger.class.php');
+require_once(dirname(__FILE__) . '/Logger.class.php');
 
 define('INDEX_FILE_NAME', 'index.php');
 define('URL_PARAM_NAME', 'proxy_url');
@@ -115,6 +115,12 @@ class PHPProxy {
 		$this->url = $url;
 		
 		$headers = $this->extractHeaders($result);
+		
+		// Set cookies first in case location header redirects us and we lose cookie info
+		if ($this->opts['accept_cookies'] === TRUE) {
+			$this->convertAndSetCookies($headers);
+		}
+		
 		if (array_key_exists('location', $headers)) {
 			$this->log->info('Redirecting to: ' . $headers['location']);
 			header('Location: ' . $this->local_url . '?' . URL_PARAM_NAME . '=' . base64_encode($headers['location']));
@@ -133,10 +139,6 @@ class PHPProxy {
 			die();
 		}
 		
-		if ($this->opts['accept_cookies'] === TRUE) {
-			$this->convertAndSetCookies($headers);
-		}
-		
 		curl_close($this->curl);
 		foreach($this->cleanup_files as $file) {
 			$this->log->debug("Removing '$file'");
@@ -149,7 +151,7 @@ class PHPProxy {
 		foreach ($headers as $key => $val) {
 			if (in_array(strtolower($key), $this->disallowed_headers)) continue;
 
-			$this->log->debug('Setting header: ' . $key . ': ' . $val);
+			//$this->log->debug('Setting header: ' . $key . ': ' . $val);
 			
 			header($key . ': ' . $val);
 		}
@@ -160,7 +162,7 @@ class PHPProxy {
 		if (strstr($contentType, 'html') !== FALSE) {
 			$html = $this->parseHtml($result);
 			
-			$this->log->debug(sprintf('HTML size is %d', sizeof($html)));
+			//$this->log->debug(sprintf('HTML size is %d', sizeof($html)));
 			
 			echo $html;
 		}
@@ -249,7 +251,7 @@ class PHPProxy {
 			$baseUrl = substr($baseUrl, 0, strpos($baseUrl, '/'));
 		}
 		
-		$this->log->debug('Base URL is: ' . $baseUrl);
+		//$this->log->debug('Base URL is: ' . $baseUrl);
 		
 		return $baseUrl;
 	}
@@ -283,6 +285,8 @@ class PHPProxy {
 			else {
 				$arr[$key] = $val;
 			}
+			
+			$this->log->debug("Header: [$key] = [$val]");
 		}
 		
 		$this->log->debug(sprintf('Got %s headers', sizeof($arr)));
@@ -512,7 +516,7 @@ class PHPProxy {
 		// use the output buffer to prevent it being written to the page
 		// in the wrong place.
 		ob_start();
-		include(dirname(__FILE__) . '/navbar.inc.php');
+		include(dirname(__FILE__) . '/../navbar.inc.php');
 		$navbar = ob_get_contents();
 		ob_end_clean();
 		
@@ -625,7 +629,7 @@ class PHPProxy {
 		$text = preg_replace('/[^a-zA-Z0-9]+/', '_', $text);
 		$text = preg_replace('/^_|_$/', '', $text);
 		
-		$this->log->debug("Sanitized '$orig' to '$text'");
+		//$this->log->debug("Sanitized '$orig' to '$text'");
 		
 		return $text;
 	}
