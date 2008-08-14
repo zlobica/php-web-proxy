@@ -102,7 +102,7 @@ class PHPProxy {
 		$this->connector->connect();
 		$result = $this->connector->getOutput();
 		
-		$headers = $this->extractHeaders($result);
+		$headers = $this->connector->getHeaders();
 		$contentType = $headers['content-type'];
 		
 		// Set cookies first in case location header redirects us and we lose cookie info
@@ -247,44 +247,6 @@ class PHPProxy {
 	}
 	
 	/**
-	 * Extract the headers from a result. This should also remove
-	 * the headers from the result.
-	 */
-	private function extractHeaders(& $result) {
-		$result = preg_replace('/HTTP\/1.1 100.*?\r\n\r\n/', '', $result);
-		$headers = substr($result, 0, strpos($result, "\r\n\r\n"));
-		
-		$result = substr($result, strpos($result, "\r\n\r\n") + 4);
-		
-		$headers = explode("\r\n", $headers);
-		
-		$arr = array();
-		
-		foreach($headers as $header) {
-			$pos = strpos($header, ':');
-			if ($pos === FALSE) continue;
-			$key = strtolower(trim(substr($header, 0, $pos)));
-			$val = trim(substr($header, $pos + 1));
-			
-			if (is_array($arr[$key])) {
-				$arr[$key][] = $val;
-			}
-			elseif (array_key_exists($key, $arr)) {
-				$arr[$key] = array($arr[$key], $val);
-			}
-			else {
-				$arr[$key] = $val;
-			}
-			
-			//$this->log->debug("Header: [$key] = [$val]");
-		}
-		
-		$this->log->debug(sprintf('Got %s headers', sizeof($arr)));
-		
-		return $arr;
-	}
-	
-	/**
 	 * Sets the cURL referer to be the referer of the current page provided that 
 	 */
 	private function setReferer() {
@@ -423,7 +385,7 @@ class PHPProxy {
 		
 		// Try to match href="link" and src="link"
 		$matches = array();
-		preg_match_all('/(action|href|src)=["\']?(.*?)["\']?[\n >]/si', $html, $matches);
+		preg_match_all('/(action|href|src)=["\']?(.*?)["\']?(?:[\n ]|\/?>)/si', $html, $matches);
 		
 		for ($i=0; $i < sizeof($matches[0]); $i++) {
 			$orig = $matches[0][$i];
