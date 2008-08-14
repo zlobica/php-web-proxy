@@ -5,6 +5,9 @@ define('LINE_BREAK', "\n");
 define('DATE_FORMAT', 'd-m-Y H:i:s');
 define('LOG_LEVEL', 0);
 
+/**
+ * Logger class. This will write out input to a log file
+ */
 class Logger {
 	const SEVERITY_DEBUG = 0;
 	const SEVERITY_INFO  = 1;
@@ -48,8 +51,9 @@ class Logger {
 		$this->openLog();
 		
 		$date = date(DATE_FORMAT);
+		$fn = $this->getCallingFunction();
 		
-		$toWrite = sprintf('%s - %5s - %s%s', $date, $this->severities[$severity], $message, LINE_BREAK);
+		$toWrite = sprintf('%1$s - %2$5s - %3$s - %4$s%5$s', $date, $this->severities[$severity], $fn, $message, LINE_BREAK);
 		
 		fwrite($this->file, $toWrite);
 		$this->closeLog();
@@ -61,6 +65,18 @@ class Logger {
 	
 	private function closeLog() {
 		fclose($this->file);
+	}
+	
+	private function getCallingFunction() {
+		$trace = debug_backtrace(FALSE);
+		
+		// $trace[0] will be this function
+		// $trace[1] will be log()
+		// $trace[2] will be (e.g.) debug
+		// $trace[3] will be the actual function
+		$fn = $trace[3];
+		
+		return $fn['class'] . $fn['type'] . $fn['function'] . '()';
 	}
 }
 

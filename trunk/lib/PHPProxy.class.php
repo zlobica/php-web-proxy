@@ -286,7 +286,7 @@ class PHPProxy {
 				$arr[$key] = $val;
 			}
 			
-			$this->log->debug("Header: [$key] = [$val]");
+			//$this->log->debug("Header: [$key] = [$val]");
 		}
 		
 		$this->log->debug(sprintf('Got %s headers', sizeof($arr)));
