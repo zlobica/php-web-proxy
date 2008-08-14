@@ -1,5 +1,5 @@
 <?php
-require_once(dirname(__FILE__) . '/PHPProxy.class.php');
+require_once(dirname(__FILE__) . '/lib/PHPProxy.class.php');
 
 $url = $_REQUEST[URL_PARAM_NAME];
 if ($url == ''):
