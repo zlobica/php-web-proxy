@@ -1,5 +1,6 @@
 <!-- ### BEGIN PROXY NAVBAR ### -->
 <?php $displayStyle = ($this->opts['navbar_sticky'] === TRUE) ? 'block' : 'none'; ?>
+<script type="text/javascript" src="js/jquery.js"></script>
 <div id="proxy_navbar" style="position:fixed;width:100%;background:white;border-width:0px;border-bottom:2px solid gray;margin:0px;left:0px;top:0px;z-index:10000000;display:<?= $displayStyle ?>;padding:0px;font-family:tahoma,verdana,arial,sans-serif;color:black;font-size:1em;font-style:normal;font-variant:normal;font-weight:normal;line-height:100%;">
 
 <form method="post" action="<?= INDEX_FILE_NAME ?>" style="display:inline;">
@@ -22,55 +23,31 @@
 
 <script type="text/javascript">
 
-var _scrolling = false;
+var _hidden = <?= $this->opts['navbar_sticky'] ? 'false' : 'true' ?>;
 
-document.getElementById('proxy_navbar').addEventListener('mousemove', function(e) {
-	if (e.stopPropagation) { e.stopPropagation(); }
-	e.cancelBubble = true;
-}, false);
+$('#proxy_navbar').mousemove(function() {
+	return false;
+});
 
-window.addEventListener('mousemove', function(e) {
+$(window).mousemove(function(e) {
 	var posY = e.clientY;
 	
-	var navbar = document.getElementById('proxy_navbar');
-	var height = navbar.offsetHeight;
+	var navbar = $('#proxy_navbar');
 	
-	if (_scrolling === true) {
-		return;
-	}
-	
-	if (posY < 15 && navbar.style.display == 'none') {
-		navbar.style.top = '-25px';
-		navbar.style.display = 'block';
-		scroller(navbar, 2, 0);
+	if (posY < 15 && _hidden) {
+		navbar.slideDown('fast');
+		_hidden = false;
 	}
 	else {
-		if (navbar.style.display == 'block' && !isSticky()) {
-			scroller(navbar, -2, -height, function() { navbar.style.display = 'none'});
+		if (posY > 50 && !_hidden && !isSticky()) {
+			navbar.slideUp('fast');
+			_hidden = true;
 		}
 	}
-}, false);
-
-function scroller(navbar, increment, target, complete_callback) {
-	_scrolling = true;
-	
-	var top = parseInt(navbar.style.top);
-	navbar.style.top = (top + increment) + 'px';
-	
-	if ((increment < 0 && top > target) || (increment > 0 && top < target)) {
-		setTimeout(function() { scroller(navbar, increment, target, complete_callback); }, 10);
-	}
-	else {
-		_scrolling = false;
-		navbar.style.top = target + 'px';
-		if (complete_callback) {
-			complete_callback();
-		}
-	}
-}
+});
 
 function isSticky() {
-	return document.getElementById('proxy_navbar_sticky').checked;
+	return $('#proxy_navbar_sticky').get(0).checked;
 }
 
 </script>
