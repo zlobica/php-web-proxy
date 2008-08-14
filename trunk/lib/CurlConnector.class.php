@@ -20,6 +20,8 @@ class CurlConnector implements Connector {
 		curl_setopt($this->curl, CURLOPT_HEADER, TRUE);
 		curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, FALSE); // Disable SSL cert checking
 		curl_setopt($this->curl, CURLOPT_SSL_VERIFYHOST, FALSE); // cURL does not like some SSL certs apparently
+		
+		$this->log->debug('Curl Connector initialised with URL: ' . $this->url);
 	}
 	
 	function setLogin($username, $password) {
@@ -44,6 +46,8 @@ class CurlConnector implements Connector {
 	
 	function connect() {
 		$this->output = curl_exec($this->curl);
+		
+		$this->extractHeaders($this->output);
 	}
 	
 	function disconnect() {
@@ -51,10 +55,48 @@ class CurlConnector implements Connector {
 	}
 	
 	function getHeaders() {
-		
+		return $this->headers;
 	}
 	
 	function getOutput() {
 		return $this->output;
+	}
+	
+	/**
+	 * Extract the headers from a result. This should also remove
+	 * the headers from the result.
+	 */
+	private function extractHeaders(& $result) {
+		$result = preg_replace('/HTTP\/1.1 100.*?\r\n\r\n/', '', $result);
+		$headers = substr($result, 0, strpos($result, "\r\n\r\n"));
+		
+		$result = substr($result, strpos($result, "\r\n\r\n") + 4);
+		
+		$headers = explode("\r\n", $headers);
+		
+		$arr = array();
+		
+		foreach($headers as $header) {
+			$pos = strpos($header, ':');
+			if ($pos === FALSE) continue;
+			$key = strtolower(trim(substr($header, 0, $pos)));
+			$val = trim(substr($header, $pos + 1));
+			
+			if (is_array($arr[$key])) {
+				$arr[$key][] = $val;
+			}
+			elseif (array_key_exists($key, $arr)) {
+				$arr[$key] = array($arr[$key], $val);
+			}
+			else {
+				$arr[$key] = $val;
+			}
+			
+			//$this->log->debug("Header: [$key] = [$val]");
+		}
+		
+		$this->log->debug(sprintf('Got %s headers', sizeof($arr)));
+		
+		$this->headers = $arr;
 	}
 }
