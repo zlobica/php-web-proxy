@@ -22,7 +22,7 @@ class PHPProxy {
 	// An array of files to cleanup once cURL has completed
 	var $cleanup_files = array();
 	
-	// Script options. May be set by the user at some point.
+	// Default script options - overrideable by values in session
 	// accept_cookies: whether to accept cookies on the client side
 	// cookies_session_only: whether to force all cookies to be session only
 	// include_navbar: whether to include the HTML navbar in pages
@@ -50,6 +50,14 @@ class PHPProxy {
 	);
 
 	function __construct($url, $username = NULL, $password = NULL) {
+		session_start();
+		
+		foreach($this->opts as $key => $value) {
+			if (array_key_exists('pref_' . $key, $_SESSION)) {
+				$this->opts[$key] = $_SESSION['pref_' . $key];
+			}
+		}
+	
 		$this->log = new Logger();
 		$this->url = $url;
 		
@@ -149,7 +157,7 @@ class PHPProxy {
 		header('Pragma: no-cache');
 		
 		foreach ($headers as $key => $val) {
-			if (in_array(strtolower($key), $this->disallowed_headers)) continue;
+			if (in_array($key, $this->disallowed_headers)) continue;
 
 			//$this->log->debug('Setting header: ' . $key . ': ' . $val);
 			
@@ -159,6 +167,7 @@ class PHPProxy {
 		$this->log->debug(sprintf('HTTP code is: [%s]', $httpCode));
 		$this->log->debug(sprintf('Content type is: [%s]', $contentType));
 		
+		// Note: binary content should be output directly by connector
 		if (strstr($contentType, 'html') !== FALSE) {
 			$html = $this->parseHtml($result);
 			
@@ -176,6 +185,22 @@ class PHPProxy {
 		}
 		
 		$this->connector->disconnect();
+	}
+	
+	/**
+	 * Sets a user preference with the specified name and value.
+	 */
+	function setPref($name, $value) {
+		// Convert to boolean if value is "true" or "false"
+		if ($value == 'true') {
+			$value = TRUE;
+		}
+		elseif ($value == 'false') {
+			$value = FALSE;
+		}
+		
+		$this->log->debug("Setting pref [$name] = [$value]");
+		$_SESSION['pref_' . $name] = $value;
 	}
 	
 	/**
@@ -323,6 +348,9 @@ class PHPProxy {
 		}
 		
 		foreach($_POST as $key => $val) {
+			if (get_magic_quotes_gpc() == 1) {
+				$val = stripslashes($val);
+			}
 			$this->post[$key] = $val;
 		}
 	}
