@@ -20,7 +20,7 @@ define('MAX_LOG_BACKUPS',  5); // The number of log files to keep.
 // '.domain.com' will match domain.com *and* all subdomains
 // if your expression starts with a '/' it is treated as a regular expression - and will be checked against the WHOLE URL
 // 
-$WHITE_LIST = array('/http:\/\/google\.co\.uk\/.*/');
+$WHITE_LIST = array();
 $BLACK_LIST = array();
 
 $BAN_LIST = array(); // an array of Regular Expressions matching IP addresses. For example. 10\.0\.0\..* would match all addresses coming from 10.0.0.0 subnet
