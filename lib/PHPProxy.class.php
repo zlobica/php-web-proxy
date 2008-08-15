@@ -1,11 +1,9 @@
 <?php
 
+require_once(dirname(__FILE__) . '/../conf/config.php');
 require_once(dirname(__FILE__) . '/Logger.class.php');
 require_once(dirname(__FILE__) . '/CurlConnector.class.php');
-
-
-define('INDEX_FILE_NAME', 'index.php');
-define('URL_PARAM_NAME', 'proxy_url');
+require_once(dirname(__FILE__) . '/HTMLParser.class.php');
 
 /**
  * PHP Proxy class.
@@ -68,11 +66,23 @@ class PHPProxy {
 			}
 		}
 		
+		if (strpos($this->url, '://') === FALSE) {
+			$this->url = 'http://' . $this->url;
+		}
+		
 		$this->appendQueryString();
 		
 		$this->local_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
 		
-		$this->log->info('Connecting to: ' . $this->url);
+		$msg = $this->checkAccess();
+		if ($msg !== TRUE) {
+			$this->log->warn('Access denied for reason: ' . $msg);
+			$_SESSION['error'] = $msg;
+			header('Location: http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/access-denied.php');
+			die();
+		}
+		
+		$this->log->info('URL to connect to: ' . $this->url);
 		
 		if ($username !== NULL) {
 			$this->username = $username;
@@ -85,6 +95,7 @@ class PHPProxy {
 		}
 		
 		$this->connector = new CurlConnector($this->url);
+		$this->htmlparser = new HTMLParser($this->url);
 	}
 	
 	/** 
@@ -123,7 +134,7 @@ class PHPProxy {
 			// Convert the URL because some scripts don't send the full URL (in violation of the RFC, I believe...)
 			$location = $headers['location'];
 			if (strpos($location, INDEX_FILE_NAME . '?' . URL_PARAM_NAME) === FALSE) {
-				$location = $this->convertUrl($location);
+				$location = $this->htmlparser->convertUrl($location);
 			}
 			else {
 				$location = $this->local_url . '?' . URL_PARAM_NAME . '=' . base64_encode($location);
@@ -158,8 +169,6 @@ class PHPProxy {
 		
 		foreach ($headers as $key => $val) {
 			if (in_array($key, $this->disallowed_headers)) continue;
-
-			//$this->log->debug('Setting header: ' . $key . ': ' . $val);
 			
 			header($key . ': ' . $val);
 		}
@@ -167,16 +176,17 @@ class PHPProxy {
 		$this->log->debug(sprintf('HTTP code is: [%s]', $httpCode));
 		$this->log->debug(sprintf('Content type is: [%s]', $contentType));
 		
-		// Note: binary content should be output directly by connector
 		if (strstr($contentType, 'html') !== FALSE) {
-			$html = $this->parseHtml($result);
+			$html = $this->htmlparser->parseHtml($result);
 			
-			//$this->log->debug(sprintf('HTML size is %d', sizeof($html)));
+			if ($this->opts['include_navbar'] === TRUE) {
+				$this->includeNavbar($html);
+			}
 			
 			echo $html;
 		}
 		elseif (strstr($contentType, 'text/css') !== FALSE) {
-			$css = $this->parseCss($result);
+			$css = $this->htmlparser->parseCss($result);
 			
 			echo $css;
 		}
@@ -207,12 +217,7 @@ class PHPProxy {
 	 * This function converts cookies for the proxy, and sends them to the user.
 	 */
 	private function convertAndSetCookies($headers) {
-		foreach ($headers as $key => $val) {
-			if (strtolower($key) == 'set-cookie') {
-				$cookies = $val;
-				break;
-			}
-		}
+		$cookies = $headers['set-cookie'];
 		
 		if ($cookies == NULL) {
 			$this->log->debug('No cookies sent with request');
@@ -411,95 +416,6 @@ class PHPProxy {
 	}
 	
 	/**
-	 * Parses HTML for links etc and returns the updated version.
-	 */
-	private function parseHtml($html) {
-		$matches = array();
-		
-		if ($this->opts['strip_script'] === TRUE) {
-			preg_match_all('/<script.*?>.*?<\/script>|on(?:load|click|mouseover|mouseout|change)=".*?"/si', $html, $matches);
-			foreach($matches[0] as $match) {
-				$html = str_replace($match, '', $html);
-			}
-		}
-		
-		// Try to match href="link" and src="link"
-		$matches = array();
-		preg_match_all('/(action|href|src)=["\']?(.*?)["\']?(?:[\n ]|\/?>)/si', $html, $matches);
-		
-		for ($i=0; $i < sizeof($matches[0]); $i++) {
-			$orig = $matches[0][$i];
-			$url = trim($matches[2][$i]);
-			
-			$new = str_replace($url, $this->convertUrl($url), $orig);
-			
-			$html = str_replace($orig, $new, $html);
-		}
-		
-		$matches = array();
-		
-		// Adds hidden input to all GET forms
-		preg_match_all('/<form (?![^>]*?method=[\'"]?post[\'"]).*?>/si', $html, $matches);
-		
-		foreach ($matches[0] as $match) {
-			$m = array();
-			preg_match('/action=[\'"]?(.*?)[\'"]?[ >]/', $match, $m);
-			$url = $m[1];
-			
-			if (strpos($url, INDEX_FILE_NAME . '?' . URL_PARAM_NAME) !== FALSE) {
-				$url = substr($url, strrpos($url, '=') + 1);
-				$this->log->debug('Converted URL to: ' . $url);
-			}
-			
-			if ($url != '') {
-				$new = $match . '<input type="hidden" name="' . URL_PARAM_NAME . '" value="' . $url . '" />';
-				$html = str_replace($match, $new, $html);
-			}
-		}
-		
-		// Extract and parse all CSS.
-		// It may be more effective to just run the entire HTML through the parseCss routine,
-		// but for now extract each CSS element and parse it separately.
-		$matches = array();
-		preg_match_all('/<style.*?>(.*?)<\/style>/is', $html, $matches);
-		
-		foreach($matches[1] as $match) {
-			$orig = $match;
-			$css = $this->parseCss($orig);
-			
-			$html = str_replace($orig, $css, $html);
-		}
-		
-		if ($this->opts['include_navbar'] === TRUE) {
-			$this->includeNavbar($html);
-		}
-		
-		return $html;
-	}
-	
-	/**
-	 * Parses css for url links.
-	 */ 
-	private function parseCss($css) {
-		$matches = array();
-		
-		preg_match_all('/url\([\'"]?(.*?)[\'"]?\)|@import (?!url)["\']?(.*?)[\'"]?;/i', $css, $matches);
-		
-		for ($i=0; $i < sizeof($matches[0]); $i++) {
-			$orig = $matches[0][$i];
-			$url = trim($matches[1][$i]);
-			if (empty($url)) {
-				$url = trim($matches[2][$i]);
-			}
-			
-			$new = str_replace($url, $this->convertUrl($url), $orig);
-			$css = str_replace($orig, $new, $css);
-		}
-		
-		return $css;
-	}
-	
-	/**
 	 * Include the nav bar in an HTML document.
 	 */
 	private function includeNavbar(& $html) {
@@ -520,65 +436,6 @@ class PHPProxy {
 			// prepend the navbar to the beginning of the document.
 			$html = $navbar . $html;
 		}
-	}
-	
-	/**
-	 * Converts a URL to one which will be handled by the proxy.
-	 */
-	private function convertUrl($url) {
-		$new = '';
-		$original = $url;
-		
-		// Ignore email links -- we cannot convert them
-		if (substr($url, 0, 7) == 'mailto:') {
-			return $url;
-		}
-		
-		$base = $this->url;
-		$protocol = 'http';
-		
-		if (strpos($base, '://') !== FALSE) {
-			$protocol = substr($base, 0, strpos($base, '://'));
-			$base = substr($base, strpos($base, '://') + 3);
-		}
-		
-		if (substr($url, 0, 1) == '/') {
-			// URL is relative to server root -- append to base URL
-			
-			// Strip off server path
-			if (strpos($base, '/') !== FALSE) {
-				$base = substr($base, 0, strpos($base, '/'));
-			}
-			
-			$new = $protocol . '://' . $base . $url;
-		}
-		elseif (substr($url, 0, 4) == 'http') {
-			// URL is an absolute URL
-			$new = $url;
-		}
-		else {
-			// URL is relative to current URL, so check whether URL is currently a directory.
-			
-			if (strpos($base, '/') === FALSE) { // URLs such as example.com
-				$new = $base . '/' . $url;
-			}
-			elseif (substr($base, -1) == '/') { // directory, such as example.com/dir/
-				$new = $base . $url;
-			}
-			else { // file, such as example.com/dir/file.html
-				$base = substr($base, 0, strrpos($base, '/'));
-				$new = $base . '/' . $url;
-			}
-			
-			$new = $protocol . '://' . $new;
-		}
-		
-		if ($new != $url) {
-			//$this->log->debug(sprintf('Converted [%s] to [%s]', $original, $new));
-		}
-		
-		// Decode HTML Entities as characters are sometimes sent to the browser encoded -- particularly &amp;s
-		return $this->local_url . '?' . URL_PARAM_NAME . '=' . base64_encode(html_entity_decode($new));
 	}
 	
 	/** 
@@ -611,6 +468,89 @@ class PHPProxy {
 	}
 	
 	/**
+	 * Check that the site is not on the blacklist / is on the whitelist, and 
+	 * that the user is not banned.
+	 */
+	private function checkAccess() {
+		global $WHITE_LIST, $BLACK_LIST, $BAN_LIST;
+		
+		$regex = '/(?:.*:\/\/)?(.*?)(?:\?|\/|$)/';
+		
+		$baseUrl = $this->url;
+		$matches = array();
+		preg_match($regex, $baseUrl, $matches);
+		
+		$domain = $matches[1];
+		
+		// Strip query string
+		if (strpos($baseUrl, '?') !== FALSE) {
+			$baseUrl = substr($baseUrl, 0, strpos($baseUrl, '?'));
+		}
+		
+		if (sizeof($WHITE_LIST) > 0) {
+			foreach($WHITE_LIST as $url) {
+				$matches = array();
+				preg_match($regex, $url, $matches);
+				
+				if ($this->checkDomainAccess($domain, $matches[1])) {
+					return true;
+				}
+			}
+			
+			return 'Site is not on white list';
+		}
+		
+		if (sizeof($BLACK_LIST) > 0) {
+			foreach($BLACK_LIST as $url) {
+				$matches = array();
+				preg_match($regex, $url, $matches);
+				
+				if ($this->checkDomainAccess($domain, $matches[1])) {
+					return 'Site is blacklisted';
+				}
+			}
+		}
+		
+		if (sizeof($BAN_LIST) > 0) {
+			$ip = $_SERVER['REMOTE_ADDR'];
+			
+			if (!empty($ip)) {
+				foreach($BAN_LIST as $banned_ip) {
+					if ($banned_ip == $ip || preg_match($banned_ip, $ip) == 0) {
+						return 'IP is banned';
+					}
+				}
+			}
+		}
+		
+		return true;
+	}
+	
+	/**
+	 * Returns true if the check domain matches the base domain.
+	 */
+	private function checkDomainAccess($base, $check) {
+		if (substr($check, 0, 1) == '/') {
+			$this->log->debug('Matches: ' . preg_match($check, $base));
+			return preg_match($check, $base) != 0;
+		}
+		elseif (substr($check, 0, 1) == '.') {
+			$check = substr($check, 1);
+			// starting with '.' means 'all subdomains'
+			// so .google.com should match www.google.com, mail.google.com etc
+			if (substr($base, -(strlen($check))) == $check) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		else {
+			return $base == $check;
+		}
+	}
+	
+	/**
 	 * Returns a sanitized version of a piece of text, i.e. lowercased and converts all non-alphanumeric
 	 * characters to underscores.
 	 */
@@ -619,7 +559,7 @@ class PHPProxy {
 		
 		$text = strtolower($text);
 		$text = preg_replace('/[^a-zA-Z0-9]+/', '_', $text);
-		$text = preg_replace('/^_|_$/', '', $text);
+		$text = preg_replace('/_$/', '', $text);
 		
 		//$this->log->debug("Sanitized '$orig' to '$text'");
 		

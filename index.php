@@ -1,4 +1,5 @@
 <?php
+require_once(dirname(__FILE__) . '/conf/config.php');
 require_once(dirname(__FILE__) . '/lib/PHPProxy.class.php');
 
 $url = $_REQUEST[URL_PARAM_NAME];

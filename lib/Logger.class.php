@@ -1,12 +1,5 @@
 <?php
 
-define('LOG_FILE',         dirname(__FILE__) . '/../logs/proxy.log'); // The path to the log file.
-define('LINE_BREAK',       "\n"); // Which line break character should be used.
-define('DATE_FORMAT',      'd-m-Y H:i:s'); // The date format for the log entry
-define('LOG_LEVEL',        0); // 0 = Debug (Lowest), 4 = Fatal (Highest)
-define('LOG_MAX_SIZE',     100); // Maximum log file size in KB. Set to 0 for unlimited.
-define('MAX_LOG_BACKUPS',  5); // The number of log files to keep.
-
 /**
  * Logger class. This will write out input to a log file
  */
@@ -102,7 +95,7 @@ class Logger {
 		
 		// $trace[0] will be this function
 		// $trace[1] will be log()
-		// $trace[2] will be (e.g.) debug
+		// $trace[2] will be (e.g.) debug()
 		// $trace[3] will be the actual function
 		$fn = $trace[3];
 		
