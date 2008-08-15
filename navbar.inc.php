@@ -8,11 +8,18 @@
 
 <table width="100%" border="0">
 	<tr>
-		<td width="10%"><label for="proxy_url">Current URL:</label></td>
+		<td width="10%" align="right"><label for="proxy_url"><strong>URL:</strong></label></td>
 		<td width="80%"><input id="proxy_url" type="text" name="<?= URL_PARAM_NAME ?>" style="width:100%;" value="<?= $this->url ?>" /></td>
 		<td width="10%">
 			<input type="submit" value="Go" />
-			<label>Sticky <input type="checkbox" id="proxy_navbar_sticky" <?php if ($this->opts['navbar_sticky'] === TRUE) echo ' checked="checked"'; ?>/></label>
+		</td>
+	</tr>
+	<tr>
+		<td align="right">
+			<strong>Options:</strong>
+		</td>
+		<td colspan="2">
+			<label><input type="checkbox" name="sticky" id="proxy_navbar_sticky" <? if ($this->opts['navbar_sticky']) echo 'checked="checked"'; ?>  onclick="setPref('navbar_sticky', this.checked);"/> Sticky</label>
 		</td>
 	</tr>
 </table>
@@ -48,6 +55,10 @@ $(window).mousemove(function(e) {
 
 function isSticky() {
 	return $('#proxy_navbar_sticky').get(0).checked;
+}
+
+function setPref(name, value) {
+	$.post('ajax/set-pref.php', { 'name': name, 'value': value }, function(result) { if (result != '') { alert(result); } });
 }
 
 </script>

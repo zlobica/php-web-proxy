@@ -8,6 +8,8 @@ require_once(dirname(__FILE__) . '/Logger.class.php');
  */
 class CurlConnector implements Connector {
 	
+	var $headers = array();
+	
 	function __construct($url) {
 		$this->log = new Logger();
 		$this->url = $url;
@@ -17,9 +19,10 @@ class CurlConnector implements Connector {
 		curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, FALSE);
 		curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($this->curl, CURLOPT_AUTOREFERER, TRUE);
-		curl_setopt($this->curl, CURLOPT_HEADER, TRUE);
 		curl_setopt($this->curl, CURLOPT_SSL_VERIFYPEER, FALSE); // Disable SSL cert checking
 		curl_setopt($this->curl, CURLOPT_SSL_VERIFYHOST, FALSE); // cURL does not like some SSL certs apparently
+		curl_setopt($this->curl, CURLOPT_HEADERFUNCTION, array(&$this, 'extractHeaders'));
+		curl_setopt($this->curl, CURLOPT_WRITEFUNCTION, array(&$this, 'extractBody'));
 		
 		$this->log->debug('Curl Connector initialised with URL: ' . $this->url);
 	}
@@ -58,12 +61,10 @@ class CurlConnector implements Connector {
 	}
 	
 	function connect() {
-		$this->output = curl_exec($this->curl);
+		curl_exec($this->curl);
 		
 		$info = curl_getinfo($this->curl);
 		$this->httpCode = $info['http_code'];
-		
-		$this->extractHeaders($this->output);
 	}
 	
 	function disconnect() {
@@ -82,41 +83,49 @@ class CurlConnector implements Connector {
 		return $this->output;
 	}
 	
-	/**
-	 * Extract the headers from a result. This should also remove
-	 * the headers from the result.
+	/** 
+	 * Callback function -- cURL will callback this function with each header.
 	 */
-	private function extractHeaders(& $result) {
-		$result = preg_replace('/HTTP\/1.1 100.*?\r\n\r\n/', '', $result);
-		$headers = substr($result, 0, strpos($result, "\r\n\r\n"));
-		
-		$result = substr($result, strpos($result, "\r\n\r\n") + 4);
-		
-		$headers = explode("\r\n", $headers);
-		
-		$arr = array();
-		
-		foreach($headers as $header) {
-			$pos = strpos($header, ':');
-			if ($pos === FALSE) continue;
-			$key = strtolower(trim(substr($header, 0, $pos)));
-			$val = trim(substr($header, $pos + 1));
-			
-			if (is_array($arr[$key])) {
-				$arr[$key][] = $val;
-			}
-			elseif (array_key_exists($key, $arr)) {
-				$arr[$key] = array($arr[$key], $val);
-			}
-			else {
-				$arr[$key] = $val;
-			}
-			
-			//$this->log->debug("Header: [$key] = [$val]");
+	function extractHeaders($curl, $header) {
+		if (empty($header)) {
+			return 0;
 		}
 		
-		$this->log->debug(sprintf('Got %s headers', sizeof($arr)));
+		if (strpos($header, ':') === FALSE) {
+			// Probably HTTP header
+			return strlen($header);
+		}
 		
-		$this->headers = $arr;
+		$key = strtolower(trim(substr($header, 0, strpos($header, ':'))));
+		$val = trim(substr($header, strpos($header, ':') + 1));
+		
+		if (array_key_exists($key, $this->headers)) {
+			if (is_array($this->headers[$key])) {
+				$this->headers[$key][] = $val;
+			}
+			else {
+				$this->headers[$key] = array($this->headers[$key], $val);
+			}
+		}
+		else {
+			$this->headers[$key] = $val;
+		}
+		
+		$this->log->debug('Set header: ' . $key . ' => ' . $val);
+		
+		return strlen($header);
+	}
+	
+	/**
+	 * Callback function -- cURL will callback this function with the body.
+	 */
+	function extractBody($curl, $body) {
+		if (empty($body)) {
+			return 0;
+		}
+		
+		$this->output .= $body;
+		
+		return strlen($body);
 	}
 }
