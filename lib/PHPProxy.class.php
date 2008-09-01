@@ -74,6 +74,8 @@ class PHPProxy {
 		
 		$this->local_url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
 		
+		$this->log->info('URL to connect to: ' . $this->url);
+		
 		$msg = $this->checkAccess();
 		if ($msg !== TRUE) {
 			$this->log->warn('Access denied for reason: ' . $msg);
@@ -81,8 +83,6 @@ class PHPProxy {
 			header('Location: http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/access-denied.php');
 			die();
 		}
-		
-		$this->log->info('URL to connect to: ' . $this->url);
 		
 		if ($username !== NULL) {
 			$this->username = $username;
@@ -95,7 +95,7 @@ class PHPProxy {
 		}
 		
 		$this->connector = new CurlConnector($this->url);
-		$this->htmlparser = new HTMLParser($this->url);
+		$this->htmlparser = new HTMLParser($this);
 	}
 	
 	/** 
@@ -527,7 +527,16 @@ class PHPProxy {
 	}
 	
 	/**
-	 * Returns true if the check domain matches the base domain.
+	 * Returns true if the check domain is part of the base domain. If the check domain starts with
+	 * a '.' then this will match subdomains.
+	 * For example:
+	 *   +-----------------------------------------+
+	 *   | base         | check           | return |
+	 *   +-----------------------------------------+
+	 *   | google.co.uk | google.co.uk    | true   |
+	 *   | google.com   | mail.google.com | false  |
+	 *   | .google.com  | mail.google.com | true   |
+	 *   +-----------------------------------------+
 	 */
 	private function checkDomainAccess($base, $check) {
 		if (substr($check, 0, 1) == '/') {
@@ -535,10 +544,9 @@ class PHPProxy {
 			return preg_match($check, $base) != 0;
 		}
 		elseif (substr($check, 0, 1) == '.') {
-			$check = substr($check, 1);
 			// starting with '.' means 'all subdomains'
 			// so .google.com should match www.google.com, mail.google.com etc
-			if (substr($base, -(strlen($check))) == $check) {
+			if (substr($check, 1) == $base || substr($base, -(strlen($check))) == $check) {
 				return true;
 			}
 			else {
