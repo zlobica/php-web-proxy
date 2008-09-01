@@ -16,6 +16,9 @@ class CurlConnector implements Connector {
 		
 		$this->curl = curl_init($this->url);
 		
+		$this->log->debug('Sending user agent: ' . $_SERVER['HTTP_USER_AGENT']);
+		
+		curl_setopt($this->curl, CURLOPT_USERAGENT, $_SERVER['HTTP_USER_AGENT']);
 		curl_setopt($this->curl, CURLOPT_FOLLOWLOCATION, FALSE);
 		curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, TRUE);
 		curl_setopt($this->curl, CURLOPT_AUTOREFERER, TRUE);
