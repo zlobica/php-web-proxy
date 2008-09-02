@@ -8,6 +8,9 @@ unset($_SESSION['error']);
 <html>
 <head>
 <title>Access Denied</title>
+
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+
 </head>
 
 <body>

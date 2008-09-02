@@ -6,6 +6,9 @@ if ($_POST['username'] == NULL):
 <html>
 <head>
 <title>Authentication Required</title>
+
+<link href="css/style.css" type="text/css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -24,12 +27,12 @@ if ($_POST['username'] == NULL):
 
 	<table>
 		<tr>
-			<td>Username</td>
-			<td><input type="text" name="username" /></td>
+			<td><label for="username">Username</label></td>
+			<td><input type="text" name="username" id="username" /></td>
 		</tr>
 		<tr>
-			<td>Password</td>
-			<td><input type="password" name="password" /></td>
+			<td><label for="password">Password</label></td>
+			<td><input type="password" name="password" id="password" /></td>
 		</tr>
 		<tr>
 			<td colspan="2" align="right">

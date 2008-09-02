@@ -105,7 +105,7 @@ class PHPProxy {
 	 */
 	function handleRequest() {
 		if ($this->username) {
-			$connector->setLogin($this->username, $this->password);
+			$this->connector->setLogin($this->username, $this->password);
 		}
 		
 		$this->setReferer();
@@ -118,7 +118,13 @@ class PHPProxy {
 			$this->connector->setPostInfo($this->post);
 		}
 		
-		$this->connector->connect();
+		if ($this->connector->connect() === FALSE) {
+			$_SESSION['error'] = $this->connector->getError();
+			session_commit();
+			header('Location: http://' . $_SERVER['HTTP_HOST'] . dirname($_SERVER['PHP_SELF']) . '/error.php');
+			die();
+		}
+
 		$result = $this->connector->getOutput();
 		
 		$httpCode = $this->connector->getHttpCode();
