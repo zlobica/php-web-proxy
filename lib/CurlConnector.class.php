@@ -64,14 +64,25 @@ class CurlConnector implements Connector {
 	}
 	
 	function connect() {
-		curl_exec($this->curl);
+		$result = curl_exec($this->curl);
+		
+		if ($result === FALSE) {
+			$this->log->error(sprintf('Error [%d] connecting to URL. Error was: %s', curl_errno($this->curl), curl_error($this->curl)));
+			return FALSE;
+		}
 		
 		$info = curl_getinfo($this->curl);
 		$this->httpCode = $info['http_code'];
+		
+		return TRUE;
 	}
 	
 	function disconnect() {
 		curl_close($this->curl);
+	}
+	
+	function getError() {
+		return curl_error($this->curl);
 	}
 	
 	function getHeaders() {

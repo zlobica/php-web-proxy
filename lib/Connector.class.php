@@ -31,7 +31,8 @@ interface Connector {
 	function setCookie($cookie);
 	
 	/** 
-	 * Make a connection to the URL.
+	 * Make a connection to the URL. Should return FALSE if the connection
+	 * was unsuccessful, or TRUE if it was successful.
 	 */
 	function connect();
 	
@@ -39,6 +40,12 @@ interface Connector {
 	 * Disconnect from the remote URL.
 	 */
 	function disconnect();
+	
+	/**
+	 * Retrieve a textual description of the most recent connection error,
+	 * or the empty string if there was none.
+	 */
+	function getError();
 	
 	/**
 	 * Retrieve the headers sent as an array of name / value pairs.
