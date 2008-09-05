@@ -94,7 +94,7 @@ class PHPProxy {
 			$this->loadUsernamePasswordInfo();
 		}
 		
-		$this->connector = new CurlConnector($this->url);
+		$this->connector = new CurlConnector($this, $this->url);
 		$this->htmlparser = new HTMLParser($this);
 	}
 	
@@ -126,9 +126,39 @@ class PHPProxy {
 		}
 
 		$result = $this->connector->getOutput();
-		
-		$httpCode = $this->connector->getHttpCode();
 		$headers = $this->connector->getHeaders();
+		$contentType = $headers['content-type'];
+		
+		foreach($this->cleanup_files as $file) {
+			$this->log->debug("Removing '$file'");
+			unlink($file);
+		}
+		
+		if (strstr($contentType, 'html') !== FALSE) {
+			$html = $this->htmlparser->parseHtml($result);
+			
+			if ($this->opts['include_navbar'] === TRUE) {
+				$this->includeNavbar($html);
+			}
+			
+			echo $html;
+		}
+		elseif (strstr($contentType, 'text/css') !== FALSE) {
+			$css = $this->htmlparser->parseCss($result);
+			
+			echo $css;
+		}
+		
+		$this->connector->disconnect();
+	}
+	
+	/**
+	 * Callback function from the connector to handle headers before the body 
+	 * has been written out. This will return TRUE if the body is to be buffered,
+	 * or FALSE if the content is binary and can be output directly.
+	 */
+	function handleHeaders($headers) {
+		$httpCode = $this->connector->getHttpCode();
 		$contentType = $headers['content-type'];
 		
 		// Set cookies first in case location header redirects us and we lose cookie info
@@ -162,11 +192,6 @@ class PHPProxy {
 			die();
 		}
 		
-		foreach($this->cleanup_files as $file) {
-			$this->log->debug("Removing '$file'");
-			unlink($file);
-		}
-		
 		header('HTTP/1.1 ' . $httpCode);
 		header('Content-Type: ' . $contentType);
 		header('Cache-Control: no-store, no-cache, must-revalidate');
@@ -181,26 +206,13 @@ class PHPProxy {
 		
 		$this->log->debug(sprintf('HTTP code is: [%s]', $httpCode));
 		$this->log->debug(sprintf('Content type is: [%s]', $contentType));
-		
-		if (strstr($contentType, 'html') !== FALSE) {
-			$html = $this->htmlparser->parseHtml($result);
-			
-			if ($this->opts['include_navbar'] === TRUE) {
-				$this->includeNavbar($html);
-			}
-			
-			echo $html;
-		}
-		elseif (strstr($contentType, 'text/css') !== FALSE) {
-			$css = $this->htmlparser->parseCss($result);
-			
-			echo $css;
+	
+		if (strstr($contentType, 'html') !== FALSE || strstr($contentType, 'text/css') !== FALSE) {
+			return TRUE; // Buffered the content for HTML and CSS
 		}
 		else {
-			echo $result;
+			return FALSE; // Binary -- do not buffer, output directly
 		}
-		
-		$this->connector->disconnect();
 	}
 	
 	/**
