@@ -6,9 +6,9 @@
  */
 interface Connector {
 	/**
-	 * Constructor with the URL to connect to.
+	 * Constructor with the Proxy object and URL to connect to.
 	 */
-	function __construct($url);
+	function __construct($proxy, $url);
 	
 	/** 
 	 * Sets the authentication info.

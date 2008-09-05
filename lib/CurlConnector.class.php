@@ -10,9 +10,12 @@ class CurlConnector implements Connector {
 	
 	var $headers = array();
 	
-	function __construct($url) {
+	function __construct($proxy, $url) {
 		$this->log = new Logger();
 		$this->url = $url;
+		$this->proxy = $proxy;
+		$this->callbackHeaders = FALSE;
+		$this->buffer = TRUE;
 		
 		$this->curl = curl_init($this->url);
 		
@@ -74,6 +77,11 @@ class CurlConnector implements Connector {
 		$info = curl_getinfo($this->curl);
 		$this->httpCode = $info['http_code'];
 		
+		if ($this->callbackHeaders === FALSE) {
+			$this->proxy->handleHeaders($this->headers);
+			$this->callbackHeaders = TRUE;
+		}
+		
 		return TRUE;
 	}
 	
@@ -134,11 +142,22 @@ class CurlConnector implements Connector {
 	 * Callback function -- cURL will callback this function with the body.
 	 */
 	function extractBody($curl, $body) {
+		if ($this->callbackHeaders === FALSE) {
+			$this->buffer = $this->proxy->handleHeaders($this->headers);
+			$this->callbackHeaders = TRUE;
+		}
+		
 		if (empty($body)) {
 			return 0;
 		}
 		
-		$this->output .= $body;
+		if ($this->buffer) {
+			$this->output .= $body;
+		}
+		else {
+			$this->log->debug('Outputting directly');
+			echo $body;
+		}
 		
 		return strlen($body);
 	}
