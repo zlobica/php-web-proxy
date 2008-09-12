@@ -155,7 +155,6 @@ class CurlConnector implements Connector {
 			$this->output .= $body;
 		}
 		else {
-			$this->log->debug('Outputting directly');
 			echo $body;
 		}
 		
