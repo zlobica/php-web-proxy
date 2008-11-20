@@ -16,7 +16,7 @@ class HTMLParser {
 	function parseHtml($html) {
 		$matches = array();
 		
-		if ($this->opts['strip_script'] === TRUE) {
+		if ($this->proxy->opts['strip_script'] === TRUE) {
 			preg_match_all('/<script.*?>.*?<\/script>|on(?:load|click|mouseover|mouseout|change)=".*?"/si', $html, $matches);
 			foreach($matches[0] as $match) {
 				$html = str_replace($match, '', $html);
