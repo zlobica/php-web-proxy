@@ -23,7 +23,7 @@ if ($url == ''):
 <table>
 	<tr>
 		<td><label for="url">URL</label></td>
-		<td><input id="url" name="<?= URL_PARAM_NAME ?>" size="100" /></td>
+		<td><input id="url" name="<?php echo URL_PARAM_NAME ?>" size="100" /></td>
 	</tr>
 	<tr>
 		<td colspan="2" align="right">

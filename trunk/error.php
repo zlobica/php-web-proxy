@@ -17,7 +17,7 @@ session_start();
 
 <p>The error was:</p>
 
-<blockquote class="connect-error"><?= $_SESSION['error'] ?></blockquote>
+<blockquote class="connect-error"><?php echo $_SESSION['error'] ?></blockquote>
 
 </body>
 </html>

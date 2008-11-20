@@ -15,12 +15,12 @@ if ($_POST['username'] == NULL):
 
 <h1>Authentication Required</h1>
 
-<p>Authentication is required before you can access <strong><?= base64_decode($_GET[URL_PARAM_NAME]) ?></strong>.</p>
+<p>Authentication is required before you can access <strong><?php echo base64_decode($_GET[URL_PARAM_NAME]) ?></strong>.</p>
 
-<p>The realm given is: <strong><?= htmlentities($_REQUEST['realm']) ?></strong></p>
+<p>The realm given is: <strong><?php echo htmlentities($_REQUEST['realm']) ?></strong></p>
 
 <form method="post" action="basic-auth.php">
-<input type="hidden" name="<?= URL_PARAM_NAME ?>" value="<?= $_GET[URL_PARAM_NAME] ?>" />
+<input type="hidden" name="<?php echo URL_PARAM_NAME ?>" value="<?php echo $_GET[URL_PARAM_NAME] ?>" />
 
 <fieldset>
 	<legend>Login</legend>

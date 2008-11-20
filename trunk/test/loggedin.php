@@ -17,7 +17,7 @@ if ($_SESSION['loggedin'] !== TRUE) {
 
 <h1>Logged In</h1>
 
-<p>Congratulations, you are logged in as: <strong><?= $_SESSION['username'] ?></strong></p>.
+<p>Congratulations, you are logged in as: <strong><?php echo $_SESSION['username']; ?></strong></p>.
 
 </body>
 </html>
