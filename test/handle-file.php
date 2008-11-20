@@ -7,7 +7,7 @@
 
 <h1>Files Uploaded</h1>
 
-<p>Test: <?= $_POST['test'] ?></p>
+<p>Test: <?php echo $_POST['test']; ?></p>
 
 <pre>
 <? print_r($_FILES); ?>

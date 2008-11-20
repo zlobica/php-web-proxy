@@ -19,7 +19,7 @@ unset($_SESSION['error']);
 
 <p>You are not allowed to visit this website.</p>
 
-<p>Reason: <?= $msg ?></p>
+<p>Reason: <?php echo $msg ?></p>
 
 </body>
 </html>
