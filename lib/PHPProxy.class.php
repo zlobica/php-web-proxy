@@ -208,9 +208,13 @@ class PHPProxy {
 		$this->log->debug(sprintf('Content type is: [%s]', $contentType));
 	
 		if (strstr($contentType, 'html') !== FALSE || strstr($contentType, 'text/css') !== FALSE) {
-			return TRUE; // Buffered the content for HTML and CSS
+			return TRUE; // Buffer the content for HTML and CSS
 		}
 		else {
+			if (! array_key_exists('content-disposition', $headers)) {
+				header('Content-Disposition: inline; filename="' . basename($this->url) . '"');
+				$this->log->debug(sprintf('Added Content-Disposition header for filename [%s]', basename($this->url)));
+			}
 			return FALSE; // Binary -- do not buffer, output directly
 		}
 	}
