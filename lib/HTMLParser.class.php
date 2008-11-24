@@ -31,6 +31,10 @@ class HTMLParser {
 			$orig = $matches[0][$i];
 			$url = trim($matches[2][$i]);
 			
+			if ($url == '/search') {
+				$this->log->debug(sprintf('URL converted from [%s] to [%s]', $url, $this->convertUrl($url)));
+			}
+			
 			$new = str_replace($url, $this->convertUrl($url), $orig);
 			
 			$html = str_replace($orig, $new, $html);
@@ -47,10 +51,9 @@ class HTMLParser {
 			$url = $m[1];
 			
 			if (strpos($url, INDEX_FILE_NAME . '?' . URL_PARAM_NAME) !== FALSE) {
-				$url = substr($url, strrpos($url, '=') + 1);
-				$this->log->debug('Converted URL to: ' . $url);
+				$url = substr($url, strrpos($url, URL_PARAM_NAME . '=') + (strlen(URL_PARAM_NAME) + 1));
 			}
-			
+
 			if ($url != '') {
 				$new = $match . '<input type="hidden" name="' . URL_PARAM_NAME . '" value="' . $url . '" />';
 				$html = str_replace($match, $new, $html);
