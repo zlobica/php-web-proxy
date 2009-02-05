@@ -19,7 +19,7 @@
 			<strong>Options:</strong>
 		</td>
 		<td colspan="2">
-			<label><input type="checkbox" name="sticky" id="proxy_navbar_sticky" <? if ($this->opts['navbar_sticky']) echo 'checked="checked"'; ?>  onclick="setPref('navbar_sticky', this.checked);"/> Sticky</label>
+			<label><input type="checkbox" name="sticky" id="proxy_navbar_sticky" <?php if ($this->opts['navbar_sticky']) echo 'checked="checked"'; ?>  onclick="setPref('navbar_sticky', this.checked);"/> Sticky</label>
 		</td>
 	</tr>
 </table>
